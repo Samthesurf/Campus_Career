@@ -4,17 +4,35 @@
     align-items: center;
     padding: 1rem 2rem;
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1000;
     font-family: 'Outfit', sans-serif;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.35s ease,
+        backdrop-filter 0.35s ease;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar-scrolled {
+    background-color: rgba(13, 13, 13, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-logo .logo-img {
     height: 40px;
     width: auto;
+}
+
+.navbar-logo a {
+    display: inline-flex;
 }
 
 .navbar-links {
@@ -63,4 +81,10 @@
 
 .btn-primary:active {
     transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
 }

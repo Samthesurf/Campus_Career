@@ -1,14 +1,14 @@
 import React from 'react';
 import './About.css';
-import speakHallImg from '../assets/Speak_hall_event.png';
+import entrepreneurSpeakingImg from '../assets/entrepreneur_speaking.jpg';
 
 const About = () => {
     return (
-        <section className="about-section">
+        <section id="about" className="about-section">
             <div className="about-container">
                 {/* Left Side: Image */}
                 <div className="about-image-wrapper">
-                    <img src={speakHallImg} alt="Speaking at Campus to Career event" className="about-image" />
+                    <img src={entrepreneurSpeakingImg} alt="Entrepreneur speaking at event" className="about-image" />
                 </div>
 
                 {/* Right Side: Content */}
@@ -28,6 +28,11 @@ const About = () => {
                         and mentors to share real-world insights with students, helping them build
                         their futures, change their mindsets, and position themselves for greatness.
                     </p>
+
+                    <button className="btn-secondary about-read-more">
+                        Read about the 2.0
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    </button>
                 </div>
             </div>
         </section>

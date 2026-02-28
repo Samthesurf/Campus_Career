@@ -41,6 +41,101 @@
     src: url('/fonts/shine_bubble.ttf') format('truetype');
 }
 
+/* ====== EVENT INFO BAR (above title) ====== */
+.event-info-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0s;
+}
+
+.event-info-bar.hero-anim-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.event-info-hat-only {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    animation: hatHover 4s ease-in-out infinite;
+}
+
+@keyframes hatHover {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.event-info-hat-only svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.event-info-bubble {
+    position: relative;
+    background: #ebdb5b;
+    /* softer yellow */
+    color: #0d0d0d;
+    border-radius: 12px;
+    padding: 0.65rem 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: left;
+    border: 1px solid #111;
+}
+
+.event-info-bubble::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: #ebdb5b;
+    border-left: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.event-info-bubble-content {
+    display: flex;
+    flex-direction: row;
+    /* Make text one line */
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.event-info-bubble-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.event-info-bubble-line svg {
+    flex-shrink: 0;
+    color: #0d0d0d;
+}
+
+/* ====== HERO TITLE ====== */
 .hero-title {
     display: flex;
     align-items: center;
@@ -51,6 +146,34 @@
     z-index: 2;
     position: relative;
     gap: 1rem;
+}
+
+/* ====== 2.0 VERSION BADGE ====== */
+.hero-version {
+    font-family: 'Shine Bubble', sans-serif;
+    font-size: 3rem;
+    color: #fff;
+    background: #000;
+    padding: 0.6rem 1.2rem;
+    border-radius: 16px;
+    letter-spacing: 2px;
+    line-height: 1;
+    align-self: center;
+    margin-top: -0.8rem;
+    /* Matches the optical vertical center of 'CAREER' text */
+    margin-left: 2.6rem;
+    /* Space to clear the hat's tassel */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.8s;
+}
+
+.hero-version.hero-anim-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ====== HERO LOAD ANIMATIONS ====== */
@@ -204,6 +327,16 @@
         right: auto;
         transform: translateX(-44%) rotate(6deg);
     }
+
+    .hero-version {
+        font-size: 2rem;
+        margin-left: 1.5rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .event-info-bubble-line {
+        font-size: 0.78rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -229,5 +362,35 @@
 
     .hero-subtitle {
         font-size: 1.1rem;
+    }
+
+    .hero-version {
+        font-size: 1.6rem;
+        padding: 0.3rem 0.7rem;
+        margin-left: 1.5rem;
+    }
+
+    .event-info-bar {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .event-info-hat-only {
+        width: 48px;
+        height: 48px;
+    }
+
+    .event-info-bubble-line {
+        font-size: 0.75rem;
+    }
+
+    .event-info-bubble {
+        padding: 0.5rem 0.9rem;
+    }
+
+    .event-info-bubble-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
     }
 }

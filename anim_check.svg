@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+    <defs>
+        <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#D6EAF8"/>
+            <stop offset="100%" stop-color="#FDFEFE"/>
+        </linearGradient>
+        
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#F1C40F" />
+        </marker>
+
+        <style>
+            @keyframes dashAnim {
+                from { stroke-dashoffset: 30; }
+                to { stroke-dashoffset: 0; }
+            }
+            .animated-line {
+                fill: none;
+                stroke: #F1C40F;
+                stroke-width: 6;
+                stroke-linecap: round;
+                stroke-dasharray: 10, 20;
+                animation: dashAnim 1s linear infinite;
+                filter: drop-shadow(0px 4px 6px rgba(241, 196, 15, 0.4));
+            }
+            .float {
+                animation: floatAnim 4s ease-in-out infinite;
+            }
+            @keyframes floatAnim {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-8px); }
+                100% { transform: translateY(0px); }
+            }
+        </style>
+    </defs>
+
+    <rect width="800" height="400" fill="url(#skyGradient)" />
+    
+    <circle cx="400" cy="180" r="80" fill="#F1C40F" opacity="0.05" />
+    <circle cx="400" cy="180" r="50" fill="#F1C40F" opacity="0.1" />
+    <circle cx="400" cy="180" r="25" fill="#F1C40F" opacity="0.3" />
+
+    <g fill="#FFFFFF" opacity="0.8">
+        <path d="M 120 100 A 20 20 0 0 1 150 85 A 25 25 0 0 1 190 95 A 15 15 0 0 1 200 120 L 120 120 Z" />
+        <path d="M 350 110 A 15 15 0 0 1 375 95 A 20 20 0 0 1 405 105 A 15 15 0 0 1 415 125 L 350 125 Z" />
+        <path d="M 680 90 A 20 20 0 0 1 710 75 A 30 30 0 0 1 760 90 A 20 20 0 0 1 770 120 L 680 120 Z" />
+    </g>
+
+    <rect x="0" y="400" width="800" height="100" fill="#2C3E50" />
+    <rect x="0" y="400" width="800" height="8" fill="#1A252F" />
+
+    <text x="160" y="465" text-anchor="middle" font-family="'Segoe UI', Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#ECF0F1" letter-spacing="3">CAMPUS</text>
+    <text x="640" y="465" text-anchor="middle" font-family="'Segoe UI', Helvetica, sans-serif" font-size="32" font-weight="bold" fill="#F1C40F" letter-spacing="3">CAREER</text>
+
+    <text x="400" y="60" text-anchor="middle" font-family="'Segoe UI', Helvetica, sans-serif" font-size="36" font-weight="900" fill="#2C3E50" letter-spacing="1">
+        CAMPUS <tspan fill="#F1C40F">TO</tspan> CAREER
+    </text>
+
+    <g fill="#2ECC71">
+        <circle cx="40" cy="380" r="25"/>
+        <circle cx="280" cy="375" r="30"/>
+    </g>
+
+    <g transform="translate(60, 240)">
+        <rect x="0" y="60" width="200" height="100" fill="#BDC3C7"/>
+        <polygon points="100,0 200,60 0,60" fill="#7F8C8D"/>
+        <polygon points="100,10 180,60 20,60" fill="#95A5A6"/>
+        <rect x="20" y="60" width="15" height="100" fill="#ECF0F1"/>
+        <rect x="60" y="60" width="15" height="100" fill="#ECF0F1"/>
+        <rect x="125" y="60" width="15" height="100" fill="#ECF0F1"/>
+        <rect x="165" y="60" width="15" height="100" fill="#ECF0F1"/>
+        <path d="M 85,160 v -40 a 15,15 0 0 1 30,0 v 40 Z" fill="#2C3E50"/>
+        <rect x="-10" y="160" width="220" height="10" fill="#95A5A6"/>
+    </g>
+
+    <g fill="#27AE60">
+        <circle cx="70" cy="390" r="20"/>
+        <circle cx="50" cy="395" r="15"/>
+        <circle cx="250" cy="385" r="25"/>
+        <circle cx="265" cy="395" r="15"/>
+    </g>
+
+    <g transform="translate(160, 160)" class="float">
+        <ellipse cx="0" cy="50" rx="80" ry="15" fill="rgba(0,0,0,0.1)"/>
+        
+        <path d="M -45,10 v 35 c 0,15 90,15 90,0 v -35 Z" fill="#111111"/>
+        
+        <path d="M -45,35 c 0,10 90,10 90,0 v 8 c 0,10 -90,10 -90,0 Z" fill="#F1C40F"/>
+
+        <polygon points="0,-30 85,0 0,30 -85,0" fill="#222222"/>
+        <polygon points="0,-26 75,0 0,26 -75,0" fill="#1A1A1A"/> <circle cx="0" cy="0" r="6" fill="#F1C40F"/>
+        
+        <path d="M 0,0 Q 45,10 55,50" stroke="#F1C40F" stroke-width="3" fill="none"/>
+        <polygon points="55,50 45,80 65,80" fill="#F1C40F"/>
+        <line x1="48" y1="80" x2="48" y2="90" stroke="#F1C40F" stroke-width="1.5"/>
+        <line x1="55" y1="80" x2="55" y2="94" stroke="#F1C40F" stroke-width="1.5"/>
+        <line x1="62" y1="80" x2="62" y2="90" stroke="#F1C40F" stroke-width="1.5"/>
+    </g>
+
+
+    <rect x="520" y="160" width="80" height="240" fill="#34495E"/>
+    <path d="M 535,180 v 220 M 555,180 v 220 M 575,180 v 220" stroke="#5D6D7E" stroke-width="6" stroke-dasharray="10 10"/>
+
+    <rect x="660" y="120" width="90" height="280" fill="#2C3E50"/>
+    <path d="M 680,140 v 260 M 705,140 v 260 M 730,140 v 260" stroke="#1A252F" stroke-width="10" stroke-dasharray="15 15"/>
+
+    <rect x="615" y="40" width="10" height="60" fill="#7F8C8D"/>
+    <circle cx="620" cy="35" r="4" fill="#E74C3C"/> <polygon points="620,100 640,100 650,130 650,400 590,400 590,130 600,100" fill="#1A252F"/>
+    
+    <polygon points="620,100 640,100 610,400 590,400" fill="#FFFFFF" opacity="0.05"/>
+
+    <path d="M 605,140 v 260 M 620,140 v 260 M 635,140 v 260" stroke="#85C1E9" stroke-width="8" stroke-dasharray="12 12" opacity="0.7"/>
+    
+    <path d="M 605,176 v 12 M 635,224 v 12 M 620,284 v 12 M 605,332 v 12" stroke="#F1C40F" stroke-width="8"/>
+
+    <g fill="#27AE60">
+        <rect x="500" y="380" width="10" height="20" fill="#795548"/>
+        <circle cx="505" cy="370" r="15"/>
+        <rect x="760" y="380" width="10" height="20" fill="#795548"/>
+        <circle cx="765" cy="370" r="15"/>
+    </g>
+
+
+    <path d="M 250, 150 C 350, 40 450, 80 575, 190" class="animated-line" marker-end="url(#arrow)" />
+
+    <g fill="#F1C40F">
+        <circle cx="280" cy="115" r="3">
+             <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="310" cy="90" r="2">
+             <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+        </circle>
+        <circle cx="530" cy="150" r="4">
+             <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
+        </circle>
+        <circle cx="560" cy="170" r="2.5">
+             <animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite" begin="0.2s"/>
+        </circle>
+    </g>
+</svg>

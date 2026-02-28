@@ -1,10 +1,9 @@
 /* ====== ABOUT SECTION ====== */
 .about-section {
     padding: 6rem 2rem;
-    background-color: #0d0d0d;
+    background-color: transparent;
     color: #fff;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    /* Subtle separation from the section above */
+    scroll-margin-top: 90px;
 }
 
 .about-container {
@@ -74,21 +73,60 @@
 
 /* Re-use the hero font classes — they're global */
 .about-title-main .bubble-text-yellow {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
 }
 
 .about-title-main .bubble-text-white-script {
-    font-size: 2.6rem;
+    font-size: clamp(1.8rem, 4.4vw, 2.6rem);
     transform: translateY(-3px);
 }
 
 .about-description {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
     line-height: 1.85;
     color: rgba(255, 255, 255, 0.75);
     max-width: 550px;
     margin: 0;
+}
+
+/* Secondary Button styles (for About Section) */
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    padding: 0.75rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary svg {
+    transition: transform 0.25s ease;
+}
+
+.btn-secondary:hover svg {
+    transform: translateX(4px);
+}
+
+.about-read-more {
+    margin-top: 2rem;
 }
 
 /* ====== Responsive ====== */
@@ -96,6 +134,11 @@
     .about-container {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    .about-image-wrapper {
+        max-width: 700px;
+        margin: 0 auto;
     }
 
     .about-content {
@@ -106,10 +149,81 @@
     .about-title {
         align-items: center;
     }
+
+    .about-title-main {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .about-section {
+        padding: 4.5rem 1.2rem;
+    }
+
+    .about-container {
+        gap: 2.2rem;
+    }
+
+    .about-title {
+        gap: 0.55rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .about-title-main {
+        flex-wrap: wrap;
+        white-space: normal;
+        gap: 0.35rem 0.6rem;
+        max-width: 18rem;
+    }
+
+    .about-title-main .bubble-text-yellow {
+        font-size: clamp(1.75rem, 10vw, 2.25rem);
+        line-height: 1.05;
+    }
+
+    .about-title-main .bubble-text-white-script {
+        font-size: clamp(1.55rem, 8.5vw, 1.95rem);
+        transform: none;
+        line-height: 1;
+    }
+
+    .about-label {
+        letter-spacing: 3px;
+        font-size: 0.78rem;
+    }
+
+    .about-description {
+        line-height: 1.72;
+    }
+
+    .about-read-more {
+        margin-top: 1.4rem;
+    }
 }
 
 @media (max-width: 600px) {
     .about-section {
-        padding: 4rem 1.5rem;
+        padding: 4rem 1rem;
+    }
+
+    .btn-secondary {
+        padding: 0.72rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .about-title-main {
+        max-width: 14rem;
+    }
+
+    .about-description {
+        font-size: 0.96rem;
+    }
+
+    .about-read-more {
+        display: flex;
+        width: 100%;
+        justify-content: center;
     }
 }

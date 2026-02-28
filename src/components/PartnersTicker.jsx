@@ -4,6 +4,7 @@ import './PartnersTicker.css';
 const TICKER_ITEMS = [
     'Partnering with',
     'COMSSA',
+    'BESA',
     'ASVA',
     'AESA',
 ];
