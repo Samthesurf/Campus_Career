@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradients for the Mortarboard -->
+    <linearGradient id="boardTopGrad" x1="10%" y1="10%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#4a4c59" />
+      <stop offset="35%" stop-color="#262730" />
+      <stop offset="100%" stop-color="#0f0f13" />
+    </linearGradient>
+    
+    <linearGradient id="boardLeftEdgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b5b7c8" />
+      <stop offset="40%" stop-color="#555768" />
+      <stop offset="100%" stop-color="#1e1f26" />
+    </linearGradient>
+
+    <linearGradient id="boardRightEdgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22232a" />
+      <stop offset="100%" stop-color="#0a0a0c" />
+    </linearGradient>
+
+    <!-- Gradients for the Skullcap (Updated for 3D Cylinder Lighting) -->
+    <linearGradient id="skullcapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d3f4a" />
+      <stop offset="35%" stop-color="#1a1b22" />
+      <stop offset="100%" stop-color="#050508" />
+    </linearGradient>
+
+    <!-- Gradients for the Gold Band (Updated for horizontal sweep) -->
+    <linearGradient id="goldOuterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffeb73" />
+      <stop offset="15%" stop-color="#ffcc00" />
+      <stop offset="50%" stop-color="#ff9d00" />
+      <stop offset="85%" stop-color="#cc5500" />
+      <stop offset="100%" stop-color="#662200" />
+    </linearGradient>
+
+    <linearGradient id="goldInnerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a4000" />
+      <stop offset="50%" stop-color="#3d1b00" />
+      <stop offset="100%" stop-color="#1f0d00" />
+    </linearGradient>
+
+    <!-- Gradients for the Tassel -->
+    <linearGradient id="tasselGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe85c" />
+      <stop offset="30%" stop-color="#ffb300" />
+      <stop offset="80%" stop-color="#d96600" />
+      <stop offset="100%" stop-color="#993d00" />
+    </linearGradient>
+    
+    <linearGradient id="tasselKnotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffdf40" />
+      <stop offset="100%" stop-color="#cc5500" />
+    </linearGradient>
+  </defs>
+
+  <!-- SKULLCAP & BACK ELEMENTS -->
+  <g id="SkullcapBase">
+    <!-- Inner Dark Hole of the cap (Inside back wall of the gold band) -->
+    <path d="M 80, 210 
+             C 130, 190 270, 200 320, 235 
+             C 270, 270 130, 240 80, 210 Z" 
+          fill="url(#goldInnerGrad)" />
+
+    <!-- Main 3D cylindrical black body -->
+    <path d="M 80, 210 
+             C 90, 190 100, 175 120, 170 
+             L 280, 190 
+             C 300, 205 310, 220 320, 235 
+             C 270, 270 130, 240 80, 210 Z" 
+          fill="url(#skullcapGrad)" />
+          
+    <!-- Drop shadow cast by the mortarboard onto the rounded cylinder -->
+    <path d="M 80, 210 
+             C 120, 225 160, 235 200, 240 
+             C 240, 238 280, 236 320, 235 
+             C 280, 210 160, 190 80, 210 Z" 
+          fill="#000000" opacity="0.6" />
+  </g>
+
+  <!-- THICK EXTRUDED GOLD BAND -->
+  <g id="GoldBand">
+    <!-- Outer thick rounded band (Torus shape) -->
+    <path d="M 80, 210 
+             C 130, 240 270, 270 320, 235 
+             C 328, 243 330, 250 330, 260 
+             C 270, 295 120, 270 70, 235 
+             C 72, 225 75, 218 80, 210 Z" 
+          fill="url(#goldOuterGrad)" />
+    
+    <!-- Sharp bright rim highlight along the top edge to enhance the 3D lip -->
+    <path d="M 82, 212 C 130, 240 268, 270 318, 237" 
+          fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+          
+    <!-- Mid-body glossy sweeping highlight -->
+    <path d="M 76, 222 C 125, 252 265, 280 325, 247" 
+          fill="none" stroke="#ffeb73" stroke-width="5" stroke-linecap="round" opacity="0.4" />
+          
+    <!-- Subtle bottom shadow line inside the gold band to ground it -->
+    <path d="M 72, 233 C 120, 265 268, 293 328, 258" 
+          fill="none" stroke="#5c1f00" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <!-- MORTARBOARD (TOP HAT) -->
+  <g id="Mortarboard">
+    <!-- Right Edge Thickness -->
+    <path d="M 200,240 L 380,195 L 380,210 L 200,255 Z" fill="url(#boardRightEdgeGrad)" stroke-linejoin="round" />
+    
+    <!-- Left Edge Thickness -->
+    <path d="M 20,165 L 200,240 L 200,255 L 20,180 Z" fill="url(#boardLeftEdgeGrad)" stroke-linejoin="round" />
+    
+    <!-- Top Surface -->
+    <path d="M 20,165 L 200,120 L 380,195 L 200,240 Z" fill="url(#boardTopGrad)" stroke="#1a1b22" stroke-width="1" stroke-linejoin="round" />
+    
+    <!-- Sharp Bevel Highlights on front edges -->
+    <path d="M 20,165 L 200,240" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.5" />
+    <path d="M 200,240 L 380,195" fill="none" stroke="#888a99" stroke-width="1" opacity="0.3" />
+  </g>
+
+  <!-- CENTER BUTTON -->
+  <g id="Button">
+    <!-- Shadow -->
+    <ellipse cx="201" cy="182" rx="19" ry="11" fill="#000000" opacity="0.5" />
+    <!-- Base -->
+    <ellipse cx="200" cy="180" rx="18" ry="10" fill="#14141a" />
+    <!-- Top -->
+    <ellipse cx="200" cy="177" rx="16" ry="8" fill="#3a3b46" />
+    <!-- Top Highlight -->
+    <path d="M 190,174 Q 200,172 210,174" fill="none" stroke="#8c8d9c" stroke-width="1.5" stroke-linecap="round" />
+  </g>
+
+  <!-- TASSEL -->
+  <g id="Tassel">
+    <!-- Shadow of the string on the board -->
+    <path d="M 200,183 C 240,193 308,183 318,253" fill="none" stroke="#000000" stroke-width="4" opacity="0.3" />
+    
+    <!-- Main String -->
+    <path d="M 200,180 C 240,190 310,180 320,250" fill="none" stroke="url(#tasselGrad)" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M 200,179 C 240,189 309,179 319,250" fill="none" stroke="#ffe78a" stroke-width="1" stroke-linecap="round" opacity="0.8" />
+
+    <!-- Back Fringe (Darker for depth) -->
+    <path d="M 315,255 C 310,270 302,295 298,310" fill="none" stroke="#b34700" stroke-width="4" stroke-linecap="round" />
+    <path d="M 326,255 C 332,270 340,295 345,310" fill="none" stroke="#b34700" stroke-width="4" stroke-linecap="round" />
+    <path d="M 321,255 C 321,270 320,295 322,315" fill="none" stroke="#993d00" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Main Front Fringe -->
+    <path d="M 317,255 C 313,275 305,295 303,315" fill="none" stroke="url(#tasselGrad)" stroke-width="5" stroke-linecap="round" />
+    <path d="M 320,255 C 318,275 312,300 314,320" fill="none" stroke="url(#tasselGrad)" stroke-width="5" stroke-linecap="round" />
+    <path d="M 323,255 C 324,275 326,300 328,322" fill="none" stroke="url(#tasselGrad)" stroke-width="5" stroke-linecap="round" />
+    <path d="M 326,255 C 330,275 338,300 342,318" fill="none" stroke="url(#tasselGrad)" stroke-width="5" stroke-linecap="round" />
+
+    <!-- Fringe Highlights (Glossy 3D effect) -->
+    <path d="M 316.5,255 C 312.5,275 304.5,295 302.5,315" fill="none" stroke="#fff1a8" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M 319.5,255 C 317.5,275 311.5,300 313.5,320" fill="none" stroke="#fff1a8" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M 322.5,255 C 323.5,275 325.5,300 327.5,322" fill="none" stroke="#fff1a8" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M 325.5,255 C 329.5,275 337.5,300 341.5,318" fill="none" stroke="#fff1a8" stroke-width="1.5" stroke-linecap="round" />
+
+    <!-- Tassel Knot base block -->
+    <rect x="314" y="248" width="14" height="13" rx="4" fill="url(#tasselKnotGrad)" transform="rotate(-12, 321, 254)" />
+    
+    <!-- Knot Threads / Wraps -->
+    <path d="M 313,250 Q 321,247 328,251" fill="none" stroke="#ffe78a" stroke-width="2" stroke-linecap="round" />
+    <path d="M 312,254 Q 321,251 329,255" fill="none" stroke="#ffe78a" stroke-width="2" stroke-linecap="round" />
+    <path d="M 314,258 Q 321,255 328,259" fill="none" stroke="#ffe78a" stroke-width="2" stroke-linecap="round" />
+    
+    <!-- Shadow under knot wraps -->
+    <path d="M 313,252 Q 321,249 328,253" fill="none" stroke="#b34700" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+    <path d="M 313,256 Q 321,253 328,257" fill="none" stroke="#b34700" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+  </g>
+</svg>

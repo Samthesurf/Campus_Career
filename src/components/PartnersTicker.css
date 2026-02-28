@@ -1,0 +1,87 @@
+/* ====== PARTNERS TICKER STRIP ====== */
+.ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background-color: #E8971A;
+    /* amber / orange that matches the site palette */
+    padding: 14px 0;
+    position: relative;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Fade-out edges */
+.ticker-wrapper::before,
+.ticker-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ticker-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #E8971A, transparent);
+}
+
+.ticker-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #E8971A, transparent);
+}
+
+/* The moving strip — 2 identical copies, shift -50% so the reset is invisible */
+.ticker-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: ticker-scroll 20s linear infinite;
+    will-change: transform;
+}
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ---- Text tokens ---- */
+.ticker-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    padding: 0 1.6rem;
+}
+
+.ticker-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 0.6rem;
+}
+
+.ticker-dot {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0 0.8rem;
+    user-select: none;
+    line-height: 1;
+}
+
+/* Pause on hover (accessibility / readability) */
+.ticker-wrapper:hover .ticker-track {
+    animation-play-state: paused;
+}
