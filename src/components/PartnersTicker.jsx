@@ -1,12 +1,27 @@
 import React from 'react';
 import './PartnersTicker.css';
+import asvaPreparedLogo from '../../assets/ASVA_prepared.png';
+import besaPreparedLogo from '../../assets/BESA_prepared.png';
+import aesaPreparedLogo from '../../assets/AESA_prepared_brand.png';
 
 const TICKER_ITEMS = [
-    'Partnering with',
-    'COMSSA',
-    'BESA',
-    'ASVA',
-    'AESA',
+    { type: 'label', text: 'Partnering With' },
+    { type: 'name', text: 'COMSSA' },
+    {
+        type: 'name-with-logo',
+        text: 'BESA',
+        src: besaPreparedLogo,
+        alt: 'BESA logo',
+        logoClass: 'ticker-logo-besa',
+    },
+    { type: 'logo', src: asvaPreparedLogo, alt: 'ASVA logo' },
+    {
+        type: 'name-with-logo',
+        text: 'AESA',
+        src: aesaPreparedLogo,
+        alt: 'AESA logo',
+        logoClass: 'ticker-logo-aesa',
+    },
 ];
 
 const PartnersTicker = () => {
@@ -18,15 +33,33 @@ const PartnersTicker = () => {
             <div className="ticker-track">
                 {items.map((item, index) => (
                     <React.Fragment key={index}>
-                        <span
-                            className={
-                                item === 'Partnering with'
-                                    ? 'ticker-label'
-                                    : 'ticker-name'
-                            }
-                        >
-                            {item}
-                        </span>
+                        {item.type === 'label' && (
+                            <span className="ticker-label">{item.text}</span>
+                        )}
+                        {item.type === 'name' && (
+                            <span className="ticker-name">{item.text}</span>
+                        )}
+                        {item.type === 'logo' && (
+                            <span className="ticker-logo-item">
+                                <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    className="ticker-logo ticker-logo-asva"
+                                    loading="lazy"
+                                />
+                            </span>
+                        )}
+                        {item.type === 'name-with-logo' && (
+                            <span className="ticker-name ticker-name-with-logo">
+                                <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    className={`ticker-logo ${item.logoClass || ''}`.trim()}
+                                    loading="lazy"
+                                />
+                                <span>{item.text}</span>
+                            </span>
+                        )}
                         <span className="ticker-dot" aria-hidden="true">•</span>
                     </React.Fragment>
                 ))}
