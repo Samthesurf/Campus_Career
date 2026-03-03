@@ -9,8 +9,33 @@
     position: relative;
     width: 100%;
     overflow: clip;
-    background-color: #0a0a0a;
-    /* Deep dark base to merge sections seamlessly */
+    background-color: #312435; /* Deep purple base */
+}
+
+/* 
+ * This layer creates a seamless transition:
+ * 1. A deep blue (#324F6C) fade at the top to blend with the hero/ticker
+ * 2. Subtle, faint light blue (#5799BA) glowing spots for depth
+ */
+.ambient-glow-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(50, 79, 108, 0.9) 0%, transparent 40%),
+        radial-gradient(circle at 15% 40%, rgba(87, 153, 186, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 85% 70%, rgba(87, 153, 186, 0.12) 0%, transparent 50%);
+}
+
+/* Adds a subtle "film grain" texture that makes the background look like premium matte material rather than flat digital colors */
+.ambient-noise {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Content Pane above background */
@@ -19,80 +44,4 @@
     z-index: 10;
     display: flex;
     flex-direction: column;
-}
-
-/* Very subtle grid overlay for tech/coherent feel */
-.lively-grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 60px 60px;
-    background-position: center;
-    z-index: 1;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 80%);
-}
-
-/* Ambient animated blobs */
-.lively-bg-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(140px);
-    z-index: 0;
-    pointer-events: none;
-    animation: floatOrb 25s infinite alternate ease-in-out;
-}
-
-.blob-1 {
-    width: 600px;
-    height: 600px;
-    background: rgba(247, 218, 33, 0.12);
-    /* Branded yellow glow */
-    top: -5%;
-    left: -5%;
-    animation-duration: 25s;
-}
-
-.blob-2 {
-    width: 700px;
-    height: 700px;
-    background: rgba(124, 58, 237, 0.10);
-    bottom: -15%;
-    right: -10%;
-    animation-duration: 32s;
-    animation-delay: -5s;
-}
-
-.blob-3 {
-    width: 550px;
-    height: 550px;
-    background: rgba(45, 212, 191, 0.08);
-    top: 35%;
-    left: 25%;
-    animation-duration: 28s;
-    animation-delay: -14s;
-}
-
-@keyframes floatOrb {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    33% {
-        transform: translate(120px, -80px) scale(1.15);
-    }
-
-    66% {
-        transform: translate(-80px, 120px) scale(0.9);
-    }
-
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
 }

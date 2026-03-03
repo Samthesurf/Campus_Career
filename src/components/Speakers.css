@@ -1,0 +1,166 @@
+.speakers-section {
+  width: 100%;
+  padding: 6rem 2rem;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+}
+
+.speakers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; /* or flex-start if we want top alignment */
+  gap: 4rem;
+}
+
+/* Left side title */
+.speakers-title-container {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.speakers-title {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.title-line {
+  font-family: 'Outfit', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  color: #ffffff;
+  /* subtle shadow to help it stand out from ambient background */
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+.title-year {
+  font-family: 'Shine Bubble', sans-serif;
+  font-size: 6.5rem;
+  color: #ebd234; /* using the same yellow as hero */
+  text-transform: none; /* keep original casing for bubble font if needed */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1;
+}
+
+/* Right side speakers grid */
+.speakers-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.speaker-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.speaker-image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 4px solid rgba(235, 210, 52, 0.5); /* subtle yellow border */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-image {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.placeholder-icon {
+  font-family: 'Shine Bubble', sans-serif;
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.speaker-info {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.placeholder-text-line {
+  background: rgba(255, 255, 255, 0.1);
+  height: 12px;
+  border-radius: 6px;
+}
+
+.placeholder-text-line.short {
+  width: 60%;
+}
+
+.placeholder-text-line.long {
+  width: 80%;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .speakers-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .speakers-title-container {
+    flex: 1 1 auto;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .speakers-title {
+    align-items: flex-start; /* keep left aligned */
+  }
+
+  .title-line {
+    font-size: 4rem;
+  }
+
+  .title-year {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title-line {
+    font-size: 3rem;
+  }
+
+  .title-year {
+    font-size: 4rem;
+  }
+  
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+}

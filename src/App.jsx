@@ -5,6 +5,7 @@ import Collaboration from './components/Collaboration'
 import About from './components/About'
 import PartnersTicker from './components/PartnersTicker'
 import FloatingMascot from './components/FloatingMascot'
+import Speakers from './components/Speakers'
 
 function App() {
   return (
@@ -15,17 +16,14 @@ function App() {
 
       {/* Animated and Coherent Wrapper for the bottom part */}
       <div className="lively-section-wrapper">
-        {/* Animated ambient light blobs */}
-        <div className="lively-bg-blob blob-1"></div>
-        <div className="lively-bg-blob blob-2"></div>
-        <div className="lively-bg-blob blob-3"></div>
-
-        {/* Minimal grid overlay for tech/event feel */}
-        <div className="lively-grid-overlay"></div>
+        {/* Seamless Premium Ambient Background */}
+        <div className="ambient-glow-bg"></div>
+        <div className="ambient-noise"></div>
 
         <div className="lively-content-pane">
           <Collaboration />
           <About />
+          <Speakers />
         </div>
       </div>
       <FloatingMascot />

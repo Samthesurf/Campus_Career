@@ -29,7 +29,7 @@ const About = () => {
                         their futures, change their mindsets, and position themselves for greatness.
                     </p>
 
-                    <button className="btn-secondary about-read-more">
+                    <button className="btn-primary about-read-more">
                         Read about the 2.0
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </button>

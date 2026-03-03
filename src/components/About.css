@@ -55,11 +55,13 @@
 
 .about-label {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
     text-transform: uppercase;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    line-height: 1;
 }
 
 .about-title-main {
@@ -127,6 +129,17 @@
 
 .about-read-more {
     margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.about-read-more svg {
+    transition: transform 0.25s ease;
+}
+
+.about-read-more:hover svg {
+    transform: translateX(4px);
 }
 
 /* ====== Responsive ====== */
@@ -188,8 +201,8 @@
     }
 
     .about-label {
-        letter-spacing: 3px;
-        font-size: 0.78rem;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
     }
 
     .about-description {

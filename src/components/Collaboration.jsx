@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Collaboration.css';
 
 // Import images
+import israelAesa from '../assets/Israel_AESA.jpg';
 import claire from '../assets/Claire.png';
 import temiloluwa from '../assets/Temiloluwa.jpg';
 import randomCrowd from '../assets/random_crowd.jpg';
@@ -11,6 +12,10 @@ import refreshments from '../assets/Refreshments.jpg';
 import eventFaceUp from '../assets/event_face_up.jpg';
 
 const imageData = [
+    {
+        src: israelAesa,
+        caption: 'The amazing Israel, former president of AESA who worked hard to make the event a blazing success',
+    },
     {
         src: claire,
         caption: 'The awesome Vivian who hosted the event and did everything in her power to make the event a success',
@@ -50,6 +55,7 @@ const cardTransforms = [
     { rotate: -6, x: -8, y: 10 },
     { rotate: 9, x: 6, y: -12 },
     { rotate: -4, x: -6, y: 5 },
+    { rotate: 5, x: 8, y: 3 },
 ];
 
 const PicShuffler = () => {

@@ -44,8 +44,8 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 200;
-    background-color: #f7da21;
-    color: #0d0d0d;
+    background-color: #E8971A;
+    color: #fff;
     border: none;
     border-radius: 50px;
     padding: 0.75rem 2rem;
@@ -56,24 +56,28 @@
     gap: 0.6rem;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-    transition: all 0.25s ease;
+    transition: all 0.15s ease-out;
     letter-spacing: 1.5px;
-    box-shadow: 0 4px 20px rgba(247, 218, 33, 0.25);
+    /* Hard solid shadow for 3D effect */
+    box-shadow: 0 4px 0 #b37311;
 }
 
 .shuffle-button:hover {
-    background-color: #fff;
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 6px 24px rgba(247, 218, 33, 0.4);
+    background-color: #fca928;
+    color: #fff;
 }
 
 .shuffle-button:active {
-    transform: translateX(-50%) scale(0.97);
+    /* Push down and remove shadow to simulate click */
+    transform: translateX(-50%) translateY(4px);
+    box-shadow: 0 0 0 #b37311;
 }
 
 .shuffle-button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+    opacity: 1;
+    cursor: default;
+    box-shadow: 0 4px 0 #b37311;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* --- Card Stack (bigger) --- */
