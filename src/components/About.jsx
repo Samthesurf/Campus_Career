@@ -27,6 +27,7 @@ const About = () => {
                         life and professional success. We bring together student leaders, entrepreneurs,
                         and mentors to share real-world insights with students, helping them build
                         their futures, change their mindsets, and position themselves for greatness.
+                        The 2026 edition is focused on students at Afe Babalola University (ABUAD).
                     </p>
 
                     <button className="btn-primary about-read-more">

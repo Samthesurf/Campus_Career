@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../assets/FRONT BLACK.png';
 
@@ -31,20 +32,22 @@ const Navbar = () => {
     return (
         <nav className={navClass}>
             <div className="navbar-logo">
-                <a href="#hero" aria-label="Go to hero section">
+                <Link to="/" aria-label="Go to hero section">
                     <img src={logo} alt="Campus Career Logo" className="logo-img" />
-                </a>
+                </Link>
             </div>
             
             <div className={`navbar-menu-container ${mobileMenuOpen ? 'mobile-open' : ''}`}>
                 <ul className="navbar-links">
-                    <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a></li>
-                    <li><a href="#speakers" onClick={() => setMobileMenuOpen(false)}>Speakers</a></li>
-                    <li><a href="#activities" onClick={() => setMobileMenuOpen(false)}>Activities</a></li>
+                    <li><a href="/#about" onClick={() => setMobileMenuOpen(false)}>About</a></li>
+                    <li><a href="/#speakers" onClick={() => setMobileMenuOpen(false)}>Speakers</a></li>
+                    <li><a href="/#hero" onClick={() => setMobileMenuOpen(false)}>Activities</a></li>
                 </ul>
                 <div className="navbar-actions">
                     <button className="btn-secondary">Become a Sponsor</button>
-                    <button className="btn-primary">Register</button>
+                    <Link to="/register">
+                        <button className="btn-primary" onClick={() => setMobileMenuOpen(false)}>Register</button>
+                    </Link>
                 </div>
             </div>
 

@@ -373,19 +373,21 @@
 @media (max-width: 600px) {
     .hero-title {
         gap: 0.5rem;
+        flex-wrap: wrap;
+        white-space: normal;
     }
 
     .bubble-text-yellow {
-        font-size: 2rem;
+        font-size: 2.6rem;
     }
 
     .bubble-text-white-script {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
     }
 
     .grad-hat {
-        width: 58px;
-        top: -32px;
+        width: 60px;
+        top: -30px;
         left: 50%;
         right: auto;
         transform: translateX(-44%) rotate(6deg);
@@ -396,9 +398,16 @@
     }
 
     .hero-version {
-        font-size: 1.6rem;
+        font-size: 2rem;
         padding: 0.3rem 0.7rem;
-        margin-left: 1.5rem;
+        margin-left: 0.5rem;
+        margin-top: 0;
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
+        line-height: 1.4;
+        padding: 0 0.5rem;
     }
 
     .event-info-bar {

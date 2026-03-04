@@ -7,6 +7,7 @@ import aesaPreparedLogo from '../../assets/AESA_prepared_brand.png';
 const TICKER_ITEMS = [
     { type: 'label', text: 'Partnering With' },
     { type: 'name', text: 'COMSSA' },
+    { type: 'name', text: 'SRC' },
     {
         type: 'name-with-logo',
         text: 'BESA',

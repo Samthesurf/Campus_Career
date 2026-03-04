@@ -1,0 +1,10 @@
+# Campus to Career
+
+> Official site for Campus to Career student career-readiness events.
+
+Site: https://example.com
+Primary page: https://example.com/
+ABUAD page: https://example.com/campus-to-career-in-abuad/
+
+Preferred citation title: Campus to Career
+Preferred description: Student-focused event and resources bridging campus life to real career outcomes.
