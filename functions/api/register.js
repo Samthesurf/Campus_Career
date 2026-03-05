@@ -1,7 +1,15 @@
 export async function onRequestPost(context) {
   try {
     const { request, env } = context;
-    const db = env.DB;
+    const db = env.campustocareer_db || env.DB;
+
+    if (!db) {
+      console.error('D1 binding not found. Expected `campustocareer_db` (or legacy `DB`).');
+      return new Response(JSON.stringify({ error: 'Server database is not configured.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
     
     // Parse the JSON request body
     const body = await request.json();
@@ -34,7 +42,7 @@ export async function onRequestPost(context) {
       }
     } catch (dbError) {
       // Check for unique constraint violation (duplicate email)
-      if (dbError.message && dbError.message.includes('UNIQUE constraint failed')) {
+      if (dbError.message && /UNIQUE constraint failed/i.test(dbError.message)) {
         return new Response(JSON.stringify({ error: 'This email is already registered.' }), {
           status: 409,
           headers: { 'Content-Type': 'application/json' }

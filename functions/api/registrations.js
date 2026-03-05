@@ -1,7 +1,15 @@
 export async function onRequestGet(context) {
   try {
     const { request, env } = context;
-    const db = env.DB;
+    const db = env.campustocareer_db || env.DB;
+
+    if (!db) {
+      console.error('D1 binding not found. Expected `campustocareer_db` (or legacy `DB`).');
+      return new Response(JSON.stringify({ error: 'Server database is not configured.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
     
     // 1. Verify authentication
     const cookieHeader = request.headers.get('Cookie');

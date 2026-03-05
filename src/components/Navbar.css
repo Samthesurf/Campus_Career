@@ -76,6 +76,11 @@
     justify-content: flex-end;
 }
 
+.navbar-actions a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .btn-primary {
     display: flex;
     justify-content: center;

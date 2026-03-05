@@ -14,3 +14,28 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## SEO and Programmatic SEO
+
+This project now includes:
+
+- Homepage SEO metadata and structured data
+- `robots.txt`, `sitemap.xml`, and `llms.txt`
+- Programmatic landing pages generated from `src/data/programmaticCampuses.js`
+
+### Commands
+
+```bash
+npm run generate:seo
+npm run build
+```
+
+### Domain configuration
+
+Set a production URL before your deploy/build so canonical URLs and sitemap entries point to the right domain.
+
+```bash
+SITE_URL=https://your-domain.com npm run build
+```
+
+If `SITE_URL` is not provided, the generator falls back to `VERCEL_URL` (if available) or `https://example.com`.

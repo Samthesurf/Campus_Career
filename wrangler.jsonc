@@ -1,22 +1,18 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-
-  // Cloudflare project name (can match your existing branding/project slug).
-  "name": "campustocareer",
-
-  // Keep this current when you intentionally adopt new platform behavior.
-  "compatibility_date": "2026-03-04",
-
-  // Vite output directory used by `npm run build`.
-  "pages_build_output_dir": "dist",
-
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "campustocareer-db",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+	"$schema": "node_modules/wrangler/config-schema.json",
+	// Cloudflare project name (can match your existing branding/project slug).
+	"name": "campustocareer",
+	// Keep this current when you intentionally adopt new platform behavior.
+	"compatibility_date": "2026-03-04",
+	// Vite output directory used by `npm run build`.
+	"pages_build_output_dir": "dist",
+	"d1_databases": [
+		{
+			"binding": "campustocareer_db",
+			"database_name": "campustocareer-db",
+			"database_id": "e7b5ca11-f082-4dfe-9060-abe387c0a50b",
+			"remote": true,
       "migrations_dir": "migrations"
-    }
-  ]
+		}
+	]
 }
-
