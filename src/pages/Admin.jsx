@@ -82,6 +82,26 @@ const Admin = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this registration?')) return;
+    
+    try {
+      const response = await fetch(`/api/registrations/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        // Refresh data
+        fetchData();
+      } else {
+        const result = await response.json();
+        alert(result.error || 'Failed to delete registration');
+      }
+    } catch (err) {
+      alert('Error connecting to server');
+    }
+  };
+
   const exportCSV = () => {
     if (!data || !data.registrations) return;
 
@@ -272,6 +292,7 @@ const Admin = () => {
                   <th>Dept</th>
                   <th>Level</th>
                   <th>Date</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -283,6 +304,15 @@ const Admin = () => {
                     <td>{reg.department}</td>
                     <td>{reg.level}</td>
                     <td>{new Date(reg.created_at).toLocaleDateString()}</td>
+                    <td>
+                      <button 
+                        onClick={() => handleDelete(reg.id)}
+                        className="btn-delete"
+                        style={{ padding: '4px 8px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

@@ -1,0 +1,1 @@
+ALTER TABLE registrations ADD COLUMN email_sent INTEGER DEFAULT 0;

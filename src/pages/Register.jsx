@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import FloatingMascot from '../components/FloatingMascot';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ const Register = () => {
     interest: '',
     heard_from: ''
   });
-  
+
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -57,16 +58,30 @@ const Register = () => {
   };
 
   if (status === 'success') {
+    const calendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Campus+to+Career+2.0&dates=20260411T090000Z/20260411T170000Z&details=BUILD+YOUR+FUTURE,+CHANGE+YOUR+MINDSET,+POSITION+YOURSELF&location=Afe+Babalola+University";
+
     return (
       <div className="register-page">
         <div className="ambient-glow-bg"></div>
         <div className="ambient-noise"></div>
+        <FloatingMascot forceVisible={true} />
         <div className="register-container success-state">
           <div className="success-icon">✓</div>
           <h2>Registration Successful!</h2>
-          <p>Thank you for registering for Campus to Career 2.0.</p>
+          <p>
+            Thank you for registering for{' '}
+            <span className="register-success-title">
+              <span className="bubble-text-yellow">CAMPUS</span>
+              <span className="bubble-text-white-script">To</span>
+              <span className="bubble-text-yellow">CAREER</span>
+              <span className="register-version-small">2.0</span>
+            </span>.
+          </p>
           <p>We've received your details and can't wait to see you there!</p>
-          <a href="/" className="btn-primary back-home-btn">Back to Home</a>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+            <a href="/" className="btn-primary back-home-btn" style={{ margin: 0 }}>Back to Home</a>
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Save the Date</a>
+          </div>
         </div>
       </div>
     );
@@ -76,11 +91,16 @@ const Register = () => {
     <div className="register-page">
       <div className="ambient-glow-bg"></div>
       <div className="ambient-noise"></div>
-      
+
       <div className="register-container">
         <div className="register-header">
           <h2>Register for the Event</h2>
-          <p>Campus to Career 2.0</p>
+          <div className="register-title-main">
+            <span className="bubble-text-yellow">CAMPUS</span>
+            <span className="bubble-text-white-script">To</span>
+            <span className="bubble-text-yellow">CAREER</span>
+            <span className="register-version">2.0</span>
+          </div>
         </div>
 
         {status === 'error' && (
@@ -92,11 +112,11 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="register-form">
           <div className="form-group">
             <label>Email <span className="required">*</span></label>
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Your email" 
-              required 
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              required
               value={formData.email}
               onChange={handleChange}
             />
@@ -104,11 +124,11 @@ const Register = () => {
 
           <div className="form-group">
             <label>What is your full name? <span className="required">*</span></label>
-            <input 
-              type="text" 
-              name="full_name" 
-              placeholder="Your answer" 
-              required 
+            <input
+              type="text"
+              name="full_name"
+              placeholder="Your answer"
+              required
               value={formData.full_name}
               onChange={handleChange}
             />
@@ -119,11 +139,11 @@ const Register = () => {
             <div className="radio-group">
               {['SMS', 'Engineering', 'Pharmacy', 'Law', 'MHS', 'Sciences'].map(college => (
                 <label key={college} className="radio-label">
-                  <input 
-                    type="radio" 
-                    name="college" 
-                    value={college} 
-                    required 
+                  <input
+                    type="radio"
+                    name="college"
+                    value={college}
+                    required
                     checked={formData.college === college}
                     onChange={handleChange}
                   />
@@ -136,11 +156,11 @@ const Register = () => {
 
           <div className="form-group">
             <label>What Department are you in? <span className="required">*</span></label>
-            <input 
-              type="text" 
-              name="department" 
-              placeholder="Your answer" 
-              required 
+            <input
+              type="text"
+              name="department"
+              placeholder="Your answer"
+              required
               value={formData.department}
               onChange={handleChange}
             />
@@ -151,11 +171,11 @@ const Register = () => {
             <div className="radio-group">
               {['100', '200', '300', '400', '500'].map(level => (
                 <label key={level} className="radio-label">
-                  <input 
-                    type="radio" 
-                    name="level" 
-                    value={level} 
-                    required 
+                  <input
+                    type="radio"
+                    name="level"
+                    value={level}
+                    required
                     checked={formData.level === level}
                     onChange={handleChange}
                   />
@@ -170,19 +190,19 @@ const Register = () => {
             <label>What caught your interest? <span className="required">*</span></label>
             <div className="radio-group">
               {[
-                'Global Scholarships', 
-                'CV, interview, cover letter', 
-                'LinkedIn', 
-                'Founders Panel', 
-                'Content Creators panel', 
+                'Global Scholarships',
+                'CV, interview, cover letter',
+                'LinkedIn',
+                'Founders Panel',
+                'Content Creators panel',
                 'Giveaway'
               ].map(interest => (
                 <label key={interest} className="radio-label">
-                  <input 
-                    type="radio" 
-                    name="interest" 
-                    value={interest} 
-                    required 
+                  <input
+                    type="radio"
+                    name="interest"
+                    value={interest}
+                    required
                     checked={formData.interest === interest}
                     onChange={handleChange}
                   />
@@ -197,22 +217,22 @@ const Register = () => {
             <label>How did you hear about the event? <span className="required">*</span></label>
             <div className="radio-group">
               {[
-                'Billboard', 
-                'Group chat', 
-                'AESA', 
-                'COMSSA', 
-                'ASVA', 
-                'SRC', 
-                'SAMSSA', 
+                'Billboard',
+                'Group chat',
+                'AESA',
+                'COMSSA',
+                'ASVA',
+                'SRC',
+                'SAMSSA',
                 'DevMe',
                 'Study Smart'
               ].map(source => (
                 <label key={source} className="radio-label">
-                  <input 
-                    type="radio" 
-                    name="heard_from" 
-                    value={source} 
-                    required 
+                  <input
+                    type="radio"
+                    name="heard_from"
+                    value={source}
+                    required
                     checked={formData.heard_from === source}
                     onChange={handleChange}
                   />
@@ -224,18 +244,18 @@ const Register = () => {
           </div>
 
           <div className="form-actions">
-            <button 
-              type="submit" 
-              className="btn-primary submit-btn" 
+            <button
+              type="submit"
+              className="btn-primary submit-btn"
               disabled={status === 'submitting'}
             >
               {status === 'submitting' ? 'Submitting...' : 'Submit'}
             </button>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="clear-btn"
               onClick={() => setFormData({
-                email: '', full_name: '', college: '', department: '', 
+                email: '', full_name: '', college: '', department: '',
                 level: '', interest: '', heard_from: ''
               })}
             >

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import './Testimonials.css';
 import anuImg from '../assets/anu.png';
+import teseImg from '../assets/Tese.jpg';
 
 const testimonialsData = [
     {
@@ -22,7 +23,7 @@ const testimonialsData = [
         text: "I thought it was really impressive. The jotters, the food, the resources here... I thought it was really impressive. And then all the work you all have put in, I'm sure it must have been tedious. But I thought this was like a properly planned-out program, and it's really impressive. Well done, guys.",
         name: "Tese Akpofure",
         role: "Dentistry Student",
-        avatar: null
+        avatar: teseImg
     }
 ];
 

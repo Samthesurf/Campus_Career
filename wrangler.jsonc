@@ -12,7 +12,7 @@
 			"database_name": "campustocareer-db",
 			"database_id": "e7b5ca11-f082-4dfe-9060-abe387c0a50b",
 			"remote": true,
-      "migrations_dir": "migrations"
+			"migrations_dir": "migrations"
 		}
 	]
 }

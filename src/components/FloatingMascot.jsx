@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import './FloatingMascot.css';
 import GraduationHat from './GraduationHat';
 
-const FloatingMascot = () => {
-    const [visible, setVisible] = useState(false);
+const FloatingMascot = ({ forceVisible = false }) => {
+    const [visible, setVisible] = useState(forceVisible);
     const [hovered, setHovered] = useState(false);
 
     useEffect(() => {
+        if (forceVisible) {
+            setVisible(true);
+            return;
+        }
+        
         const handleScroll = () => {
             // Show when scrolled past ~80% of viewport height (hero)
             setVisible(window.scrollY > window.innerHeight * 0.8);
@@ -15,7 +20,7 @@ const FloatingMascot = () => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll(); // Check initial state
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [forceVisible]);
 
     return (
         <div
