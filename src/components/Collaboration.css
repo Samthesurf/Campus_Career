@@ -1,9 +1,10 @@
 /* ====== PIC SHUFFLER SECTION ====== */
 .pic-shuffler-section {
     position: relative;
-    padding: 8rem 2rem 10rem;
+    padding: 5rem 2rem 10rem;
     background-color: transparent;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -26,6 +27,35 @@
     width: 1px;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* --- Section Heading --- */
+.shuffler-heading {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    /* Enough bottom margin so speech bubbles never overlap */
+    margin-bottom: 7rem;
+}
+
+.shuffler-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.shuffler-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    font-weight: 500;
+    color: #ebd234;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
 /* --- Shuffler Layout --- */
@@ -192,13 +222,25 @@
 
 /* ====== Responsive ====== */
 @media (max-width: 600px) {
+    .pic-shuffler-section {
+        padding: 4rem 1rem 4rem;
+    }
+
+    .shuffler-heading {
+        margin-bottom: 6rem;
+    }
+
+    .shuffler-title {
+        font-size: clamp(1.8rem, 8vw, 2.4rem);
+    }
+
+    .shuffler-subtitle {
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
+    }
+
     .shuffler-stack {
         width: 300px;
         height: 370px;
-    }
-
-    .pic-shuffler-section {
-        padding: 9rem 1rem 4rem;
     }
 
     .speech-bubble {

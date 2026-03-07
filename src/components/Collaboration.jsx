@@ -87,6 +87,12 @@ const PicShuffler = () => {
                 <div className="section-line"></div>
             </div>
 
+            {/* Section Heading */}
+            <div className="shuffler-heading">
+                <h2 className="shuffler-title">Highlights</h2>
+                <p className="shuffler-subtitle">Moments from Campus to Career 1.0</p>
+            </div>
+
             <div className="shuffler-container">
                 <div className="shuffler-stack">
                     {imageData.map((item, idx) => {

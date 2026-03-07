@@ -7,6 +7,7 @@ import About from './components/About'
 import PartnersTicker from './components/PartnersTicker'
 import FloatingMascot from './components/FloatingMascot'
 import Speakers from './components/Speakers'
+import Testimonials from './components/Testimonials'
 import SeoMeta from './components/SeoMeta'
 import Register from './pages/Register'
 import Admin from './pages/Admin'
@@ -16,7 +17,7 @@ function App() {
     <div className="app-container">
       <SeoMeta />
       <Navbar />
-      
+
       <Routes>
         <Route path="/" element={
           <main>
@@ -33,6 +34,7 @@ function App() {
                 <Collaboration />
                 <About />
                 <Speakers />
+                <Testimonials />
               </div>
             </div>
           </main>
