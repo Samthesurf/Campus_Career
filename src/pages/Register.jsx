@@ -79,7 +79,7 @@ const Register = () => {
       
       <div className="register-container">
         <div className="register-header">
-          <h2>Register for Event</h2>
+          <h2>Register for the Event</h2>
           <p>Campus to Career 2.0</p>
         </div>
 
@@ -204,7 +204,8 @@ const Register = () => {
                 'ASVA', 
                 'SRC', 
                 'SAMSSA', 
-                'DevMe'
+                'DevMe',
+                'Study Smart'
               ].map(source => (
                 <label key={source} className="radio-label">
                   <input 
