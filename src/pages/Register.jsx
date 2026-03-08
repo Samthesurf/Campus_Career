@@ -80,7 +80,9 @@ const Register = () => {
           <p>We've received your details and can't wait to see you there!</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '1.5rem', flexWrap: 'wrap' }}>
             <a href="/" className="btn-primary back-home-btn" style={{ margin: 0 }}>Back to Home</a>
-            <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Save the Date</a>
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
+              Save the Date <span>&rarr;</span>
+            </a>
           </div>
         </div>
       </div>
@@ -169,7 +171,7 @@ const Register = () => {
           <div className="form-group">
             <label>What level are you in? <span className="required">*</span></label>
             <div className="radio-group">
-              {['100', '200', '300', '400', '500'].map(level => (
+              {['100', '200', '300', '400', '500', '600', 'Other'].map(level => (
                 <label key={level} className="radio-label">
                   <input
                     type="radio"
@@ -223,9 +225,8 @@ const Register = () => {
                 'COMSSA',
                 'ASVA',
                 'SRC',
-                'SAMSSA',
-                'DevMe',
-                'Study Smart'
+                'Study Smart',
+                'Friends'
               ].map(source => (
                 <label key={source} className="radio-label">
                   <input
