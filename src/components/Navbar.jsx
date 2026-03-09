@@ -36,12 +36,12 @@ const Navbar = () => {
                     <img src={logo} alt="Campus Career Logo" className="logo-img" />
                 </Link>
             </div>
-            
+
             <div className={`navbar-menu-container ${mobileMenuOpen ? 'mobile-open' : ''}`}>
                 <ul className="navbar-links">
                     <li><a href="/#about" onClick={() => setMobileMenuOpen(false)}>About</a></li>
                     <li><a href="/#speakers" onClick={() => setMobileMenuOpen(false)}>Speakers</a></li>
-                    <li><a href="/#hero" onClick={() => setMobileMenuOpen(false)}>Activities</a></li>
+                    <li><a href="/#activities" onClick={() => setMobileMenuOpen(false)}>Activities</a></li>
                 </ul>
                 <div className="navbar-actions">
                     <button className="btn-secondary">Become a Sponsor</button>

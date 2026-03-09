@@ -1,0 +1,357 @@
+/* ====== ACTIVITIES SECTION ====== */
+.activities-section {
+    width: 100%;
+    padding: 5rem 0;
+    /* Padding so the flares touch the adjacent sections smoothly */
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    scroll-margin-top: 90px;
+    background: transparent;
+    --activities-tangent-size: 80px;
+    --activities-tangent-overlap: 2px;
+    --activities-label-surface: #ffffff;
+    --activities-amber-surface: linear-gradient(135deg, #E8971A 0%, #d4850f 100%);
+    --activities-amber-tangent-surface: linear-gradient(90deg, #de8d16 0%, #d4850f 100%);
+    --activities-purple-surface: linear-gradient(135deg, #6b3a7d 0%, #4e2a5c 100%);
+    --activities-purple-tangent-surface: linear-gradient(90deg, #5e356d 0%, #4e2a5c 100%);
+}
+
+/* ====== MAIN CONTAINER — full width + outward tangent corners ====== */
+.activities-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    min-height: 400px;
+    border-radius: 0;
+    /* Clear previous inward rounded corners */
+    position: relative;
+    /* overflow: hidden is REMOVED so outward tangential flares can stick out! */
+}
+
+/* ====== OUTWARD TANGENTIAL FLARES ====== */
+
+/* 1. Left Panel Flares (Top & Bottom Left) */
+.activities-label-panel::before,
+.activities-label-panel::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: var(--activities-tangent-size);
+    height: var(--activities-tangent-size);
+    background: var(--activities-label-surface);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Top Left Flare - Concave sweeping UP and OUT */
+.activities-label-panel::before {
+    top: calc(-1 * var(--activities-tangent-size));
+    -webkit-mask: radial-gradient(circle at 100% 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+    mask: radial-gradient(circle at 100% 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+}
+
+/* Bottom Left Flare - Concave sweeping DOWN and OUT */
+.activities-label-panel::after {
+    bottom: calc(-1 * var(--activities-tangent-size));
+    -webkit-mask: radial-gradient(circle at 100% 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+    mask: radial-gradient(circle at 100% 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+}
+
+
+/* 2. Right Strips Flares (Top & Bottom Right) */
+/* The top right flare attaches to the first visual strip */
+.activity-strip:first-child::before {
+    content: '';
+    position: absolute;
+    right: calc(-1 * var(--activities-tangent-overlap));
+    top: calc(-1 * var(--activities-tangent-size) + var(--activities-tangent-overlap));
+    width: var(--activities-tangent-size);
+    height: var(--activities-tangent-size);
+    background: var(--activities-amber-tangent-surface);
+    -webkit-mask: radial-gradient(circle at 0px 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+    mask: radial-gradient(circle at 0px 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* The bottom right flare attaches to the last visual strip */
+.activity-strip:last-child::after {
+    content: '';
+    position: absolute;
+    right: calc(-1 * var(--activities-tangent-overlap));
+    bottom: calc(-1 * var(--activities-tangent-size) + var(--activities-tangent-overlap));
+    width: var(--activities-tangent-size);
+    height: var(--activities-tangent-size);
+    background: var(--activities-purple-tangent-surface);
+    -webkit-mask: radial-gradient(circle at 0px 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+    mask: radial-gradient(circle at 0px 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ====== LEFT PANEL — Vertical Title ====== */
+.activities-label-panel {
+    flex: 0 0 180px;
+    background: var(--activities-label-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    isolation: isolate;
+    padding: 2.5rem 1rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Keep the label panel solid so it matches its tangent caps */
+.activities-label-panel .shimmer-overlay {
+    display: none;
+}
+
+/* Two-line vertical text */
+.activities-label-text {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    position: relative;
+    z-index: 2;
+}
+
+.label-line {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #312435;
+    text-shadow: none;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* ====== RIGHT PANEL — Activity Strips ====== */
+.activities-strips {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ====== INDIVIDUAL STRIP ====== */
+.activity-strip {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 2rem;
+    position: relative;
+    isolation: isolate;
+    /* overflow on strip must remain visible if flares are going to stick out! */
+    cursor: default;
+    transition: flex 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Strip inner content layout */
+.strip-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+/* Icon container */
+.strip-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.activity-strip:hover .strip-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.strip-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2;
+}
+
+/* Main text */
+.strip-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s ease, letter-spacing 0.35s ease;
+    text-align: center;
+}
+
+.activity-strip:hover .strip-text {
+    letter-spacing: 3px;
+}
+
+/* Subtle shine sweep on hover */
+/* ====== STRIP COLOR PALETTE — Site theme colors ====== */
+/* 1. Rich Amber/Gold */
+.strip-amber {
+    background: linear-gradient(135deg, #E8971A 0%, #d4850f 100%);
+}
+
+/* 2. Deep Warm Gold */
+.strip-gold {
+    background: linear-gradient(135deg, #ebd234 0%, #d4b82a 100%);
+    color: #0d0d0d;
+}
+
+.strip-gold .strip-text {
+    color: #0d0d0d;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+}
+
+.strip-gold .strip-icon svg {
+    color: #0d0d0d;
+}
+
+/* 3. Deep Teal/Blue */
+.strip-teal {
+    background: linear-gradient(135deg, #324F6C 0%, #2a4259 100%);
+}
+
+/* 4. Warm Coral/Orange */
+.strip-coral {
+    background: linear-gradient(135deg, #e06543 0%, #c24f32 100%);
+}
+
+/* 5. Rich Purple */
+.strip-purple {
+    background: linear-gradient(135deg, #6b3a7d 0%, #4e2a5c 100%);
+}
+
+/* ====== SCROLL-IN ANIMATION ====== */
+.activity-strip {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+.activity-strip.strip-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        flex 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activity-strip:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.activity-strip:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.activity-strip:nth-child(3) {
+    transition-delay: 0.19s;
+}
+
+.activity-strip:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.activity-strip:nth-child(5) {
+    transition-delay: 0.33s;
+}
+
+.activities-label-panel {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activities-label-panel.label-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+    .activities-label-panel {
+        flex: 0 0 130px;
+    }
+
+    .label-line {
+        font-size: 2rem;
+    }
+
+    .strip-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .activities-section {
+        padding: 4rem 0;
+    }
+
+    .activities-container {
+        flex-direction: column;
+    }
+
+    .activities-label-text {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .label-line {
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+        transform: none;
+        font-size: 2rem;
+    }
+
+    .activity-strip {
+        padding: 1.2rem 1.5rem;
+        min-height: 64px;
+    }
+
+    .strip-text {
+        font-size: 1.05rem;
+    }
+
+    .strip-icon {
+        opacity: 1;
+        transform: translateX(0);
+        width: 24px;
+        height: 24px;
+    }
+
+    .strip-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Hide tricky desktop-only flares on mobile layout since it stacks differently */
+    .activities-label-panel::before,
+    .activities-label-panel::after,
+    .activity-strip:first-child::before,
+    .activity-strip:last-child::after {
+        display: none;
+    }
+}

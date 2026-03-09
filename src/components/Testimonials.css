@@ -52,11 +52,31 @@
 .testimonials-subheading {
     font-family: 'Outfit', sans-serif;
     font-size: 1.2rem;
-    color: #ebd234;
-    /* Theme yellow */
+    color: rgba(255, 255, 255, 0.7);
     margin-top: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.testimonials-title-styled {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.testimonials-title-styled .bubble-text-yellow {
+    font-size: 1.35rem;
+}
+
+.testimonials-title-styled .bubble-text-white-script {
+    font-size: 1.2rem;
+    transform: translateY(-1px);
+    text-transform: none;
 }
 
 .testimonials-slider {

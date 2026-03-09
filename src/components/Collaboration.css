@@ -53,9 +53,31 @@
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.95rem, 2vw, 1.15rem);
     font-weight: 500;
-    color: #ebd234;
+    color: rgba(255, 255, 255, 0.7);
     margin: 0;
-    letter-spacing: 0.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.shuffler-title-styled {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.shuffler-title-styled .bubble-text-yellow {
+    font-size: 1.25rem;
+}
+
+.shuffler-title-styled .bubble-text-white-script {
+    font-size: 1.1rem;
+    transform: translateY(-1px);
+    text-transform: none;
 }
 
 /* --- Shuffler Layout --- */

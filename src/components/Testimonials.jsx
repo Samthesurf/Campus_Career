@@ -2,14 +2,15 @@ import React, { useRef } from 'react';
 import './Testimonials.css';
 import anuImg from '../assets/anu.png';
 import teseImg from '../assets/Tese.jpg';
+import toluwaniImg from '../assets/Toluwani.png';
 
 const testimonialsData = [
     {
         id: 1,
         text: "but then I realised that it was Vivian's initiative. And I was like, wow. And um, it's really a great one for someone to come out and stand out. This is not something you will see in Harvard. So, it's really a great one and I really learnt a lot, a lot. So thank you so much.",
         name: "The Real Toluwani",
-        role: "SMS Student",
-        avatar: null
+        role: "Pharmacy Student",
+        avatar: toluwaniImg
     },
     {
         id: 2,
@@ -22,7 +23,7 @@ const testimonialsData = [
         id: 3,
         text: "I thought it was really impressive. The jotters, the food, the resources here... I thought it was really impressive. And then all the work you all have put in, I'm sure it must have been tedious. But I thought this was like a properly planned-out program, and it's really impressive. Well done, guys.",
         name: "Tese Akpofure",
-        role: "Dentistry Student",
+        role: "MBBS Student",
         avatar: teseImg
     }
 ];
@@ -49,7 +50,15 @@ export default function Testimonials() {
 
                 <div className="testimonials-header">
                     <h3 className="testimonials-heading">What our attendees said</h3>
-                    <p className="testimonials-subheading">Real stories from the Campus to Career experience</p>
+                    <p className="testimonials-subheading">
+                        Real stories from the{' '}
+                        <span className="testimonials-title-styled">
+                            <span className="bubble-text-yellow">Campus</span>{' '}
+                            <span className="bubble-text-white-script">To</span>{' '}
+                            <span className="bubble-text-yellow">Career</span>
+                        </span>{' '}
+                        experience
+                    </p>
                 </div>
 
                 <div className="testimonials-slider" ref={sliderRef}>

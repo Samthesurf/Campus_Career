@@ -7,6 +7,7 @@ import About from './components/About'
 import PartnersTicker from './components/PartnersTicker'
 import FloatingMascot from './components/FloatingMascot'
 import Speakers from './components/Speakers'
+import Activities from './components/Activities'
 import Testimonials from './components/Testimonials'
 import SeoMeta from './components/SeoMeta'
 import Register from './pages/Register'
@@ -34,6 +35,7 @@ function App() {
                 <Collaboration />
                 <About />
                 <Speakers />
+                <Activities />
                 <Testimonials />
               </div>
             </div>

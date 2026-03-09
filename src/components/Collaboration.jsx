@@ -90,7 +90,15 @@ const PicShuffler = () => {
             {/* Section Heading */}
             <div className="shuffler-heading">
                 <h2 className="shuffler-title">Highlights</h2>
-                <p className="shuffler-subtitle">Moments from Campus to Career 1.0</p>
+                <p className="shuffler-subtitle">
+                    Moments from{' '}
+                    <span className="shuffler-title-styled">
+                        <span className="bubble-text-yellow">Campus</span>{' '}
+                        <span className="bubble-text-white-script">To</span>{' '}
+                        <span className="bubble-text-yellow">Career</span>
+                    </span>{' '}
+                    1.0
+                </p>
             </div>
 
             <div className="shuffler-container">
