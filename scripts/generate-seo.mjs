@@ -14,13 +14,13 @@ const resolveSiteUrl = () => {
   const rawValue =
     process.env.SITE_URL ||
     process.env.VITE_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://example.com');
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://campustocareer.pages.dev');
 
   try {
     const withProtocol = rawValue.startsWith('http') ? rawValue : `https://${rawValue}`;
     return new URL(withProtocol).origin.replace(/\/$/, '');
   } catch {
-    return 'https://example.com';
+    return 'https://campustocareer.pages.dev';
   }
 };
 

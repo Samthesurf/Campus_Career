@@ -1,62 +1,78 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Activities.css';
 
+import { FileText, Linkedin, Globe, Mic, MonitorPlay } from 'lucide-react';
+
 const activities = [
     {
-        label: 'CV / Resume Creation',
-        colorClass: 'strip-amber',
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-            </svg>
-        ),
+        title: 'CV / Resume Creation',
+        tone: 'amber',
+        Icon: FileText,
+        category: 'Document workshop',
+        description:
+            'Create a polished resume that presents your projects, achievements, and leadership in a format that feels focused and recruiter-friendly.',
+        points: [
+            'ATS-aware structure and formatting tips',
+            'Sharper bullet writing with measurable impact',
+            'Quick feedback you can apply immediately',
+        ],
+        outcome: 'Walk away with a stronger draft ready for internship and job applications.',
     },
     {
-        label: 'LinkedIn Building',
-        colorClass: 'strip-teal',
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-            </svg>
-        ),
+        title: 'LinkedIn Building',
+        tone: 'teal',
+        Icon: Linkedin,
+        category: 'Profile upgrade',
+        description:
+            'Refine your LinkedIn presence so your headline, summary, featured section, and experience tell a stronger story to recruiters and collaborators.',
+        points: [
+            'Intentional profile positioning',
+            'Headline and summary improvements',
+            'Networking and visibility suggestions',
+        ],
+        outcome: 'Make your online profile easier to discover, understand, and trust.',
     },
     {
-        label: 'Global Scholarship',
-        colorClass: 'strip-gold',
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </svg>
-        ),
+        title: 'Global Scholarship',
+        tone: 'gold',
+        Icon: Globe,
+        category: 'Opportunity strategy',
+        description:
+            'Understand how to approach scholarships with better planning, clearer positioning, and stronger application materials from the start.',
+        points: [
+            'Smarter opportunity shortlisting',
+            'Direction for essays and personal statements',
+            'Better preparation for supporting documents',
+        ],
+        outcome: 'Leave with a clearer game plan for competitive scholarship applications.',
     },
     {
-        label: 'Entrepreneurs Talk',
-        colorClass: 'strip-coral',
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 20V10" />
-                <path d="M18 20V4" />
-                <path d="M6 20v-4" />
-            </svg>
-        ),
+        title: 'Entrepreneurs Talk',
+        tone: 'purple',
+        Icon: Mic,
+        category: 'Founder insights',
+        description:
+            'Hear practical lessons from entrepreneurs on building ideas, making decisions, learning from setbacks, and creating momentum from limited resources.',
+        points: [
+            'Real stories from founders and builders',
+            'Perspective on risk, resilience, and growth',
+            'Space for questions and live interaction',
+        ],
+        outcome: 'Gain practical insight you can apply to your own projects and goals.',
     },
     {
-        label: 'Content Creators',
-        colorClass: 'strip-purple',
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="23 7 16 12 23 17 23 7" />
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-            </svg>
-        ),
+        title: 'Content Creators',
+        tone: 'blue',
+        Icon: MonitorPlay,
+        category: 'Personal brand',
+        description:
+            'See how creators turn content into influence by communicating clearly, staying consistent, and building communities around their work.',
+        points: [
+            'Content planning and positioning basics',
+            'Audience engagement habits that matter',
+            'Ways digital presence can support career growth',
+        ],
+        outcome: 'Leave with ideas for building a stronger and more intentional public presence.',
     },
 ];
 
@@ -85,27 +101,46 @@ const Activities = () => {
     return (
         <section id="activities" className="activities-section" ref={sectionRef}>
             <div className="activities-container">
-                {/* Left Panel — Vertical Title */}
-                <div className={`activities-label-panel ${visible ? 'label-visible' : ''}`}>
-                    <div className="shimmer-overlay"></div>
-                    <div className="activities-label-text">
-                        <span className="label-line">What to</span>
-                        <span className="label-line">Expect</span>
-                    </div>
+                <div className={`activities-header ${visible ? 'header-visible' : ''}`}>
+                    <h2 className="activities-title">
+                        <span className="activities-title-main">WHAT TO</span>
+                        <span className="activities-title-highlight">EXPECT</span>
+                    </h2>
+                    <p className="activities-description">
+                        Each activity is designed to be practical, approachable, and valuable beyond the
+                        event itself. Instead of only introducing ideas, the sessions help students leave
+                        with clearer direction and something they can build on right away.
+                    </p>
                 </div>
 
-                {/* Right Panel — Colored Activity Strips */}
-                <div className="activities-strips">
+                <div className="activities-grid">
                     {activities.map((activity, index) => (
-                        <div
-                            className={`activity-strip ${activity.colorClass} ${visible ? 'strip-visible' : ''}`}
-                            key={index}
+                        <article
+                            className={`activity-card tone-${activity.tone} ${visible ? 'card-visible' : ''}`}
+                            key={activity.title}
                         >
-                            <div className="strip-content">
-                                <span className="strip-icon">{activity.icon}</span>
-                                <span className="strip-text">{activity.label}</span>
+                            <div className="activity-card-visual">
+                                <span className="activity-index">{`0${index + 1}`}</span>
+                                <div className="activity-icon-shell" aria-hidden="true">
+                                    <activity.Icon size={34} strokeWidth={2} />
+                                </div>
+                                <span className="activity-pill">{activity.category}</span>
                             </div>
-                        </div>
+
+                            <div className="activity-card-body">
+                                <h3 className="activity-card-title">{activity.title}</h3>
+                                <p className="activity-card-description">{activity.description}</p>
+
+                                <p className="activity-list-label">What you will get</p>
+                                <ul className="activity-points">
+                                    {activity.points.map((point) => (
+                                        <li key={point}>{point}</li>
+                                    ))}
+                                </ul>
+
+                                <p className="activity-outcome">{activity.outcome}</p>
+                            </div>
+                        </article>
                     ))}
                 </div>
             </div>

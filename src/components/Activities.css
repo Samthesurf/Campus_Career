@@ -1,357 +1,395 @@
-/* ====== ACTIVITIES SECTION ====== */
 .activities-section {
     width: 100%;
     padding: 5rem 0;
-    /* Padding so the flares touch the adjacent sections smoothly */
     position: relative;
     z-index: 10;
     color: #fff;
     scroll-margin-top: 90px;
     background: transparent;
-    --activities-tangent-size: 80px;
-    --activities-tangent-overlap: 2px;
-    --activities-label-surface: #ffffff;
-    --activities-amber-surface: linear-gradient(135deg, #E8971A 0%, #d4850f 100%);
-    --activities-amber-tangent-surface: linear-gradient(90deg, #de8d16 0%, #d4850f 100%);
-    --activities-purple-surface: linear-gradient(135deg, #6b3a7d 0%, #4e2a5c 100%);
-    --activities-purple-tangent-surface: linear-gradient(90deg, #5e356d 0%, #4e2a5c 100%);
 }
 
-/* ====== MAIN CONTAINER — full width + outward tangent corners ====== */
 .activities-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    width: 100%;
-    min-height: 400px;
-    border-radius: 0;
-    /* Clear previous inward rounded corners */
-    position: relative;
-    /* overflow: hidden is REMOVED so outward tangential flares can stick out! */
-}
-
-/* ====== OUTWARD TANGENTIAL FLARES ====== */
-
-/* 1. Left Panel Flares (Top & Bottom Left) */
-.activities-label-panel::before,
-.activities-label-panel::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: var(--activities-tangent-size);
-    height: var(--activities-tangent-size);
-    background: var(--activities-label-surface);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Top Left Flare - Concave sweeping UP and OUT */
-.activities-label-panel::before {
-    top: calc(-1 * var(--activities-tangent-size));
-    -webkit-mask: radial-gradient(circle at 100% 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-    mask: radial-gradient(circle at 100% 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-}
-
-/* Bottom Left Flare - Concave sweeping DOWN and OUT */
-.activities-label-panel::after {
-    bottom: calc(-1 * var(--activities-tangent-size));
-    -webkit-mask: radial-gradient(circle at 100% 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-    mask: radial-gradient(circle at 100% 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-}
-
-
-/* 2. Right Strips Flares (Top & Bottom Right) */
-/* The top right flare attaches to the first visual strip */
-.activity-strip:first-child::before {
-    content: '';
-    position: absolute;
-    right: calc(-1 * var(--activities-tangent-overlap));
-    top: calc(-1 * var(--activities-tangent-size) + var(--activities-tangent-overlap));
-    width: var(--activities-tangent-size);
-    height: var(--activities-tangent-size);
-    background: var(--activities-amber-tangent-surface);
-    -webkit-mask: radial-gradient(circle at 0px 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-    mask: radial-gradient(circle at 0px 0px, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* The bottom right flare attaches to the last visual strip */
-.activity-strip:last-child::after {
-    content: '';
-    position: absolute;
-    right: calc(-1 * var(--activities-tangent-overlap));
-    bottom: calc(-1 * var(--activities-tangent-size) + var(--activities-tangent-overlap));
-    width: var(--activities-tangent-size);
-    height: var(--activities-tangent-size);
-    background: var(--activities-purple-tangent-surface);
-    -webkit-mask: radial-gradient(circle at 0px 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-    mask: radial-gradient(circle at 0px 100%, transparent var(--activities-tangent-size), black calc(var(--activities-tangent-size) + 0.5px));
-    pointer-events: none;
-    z-index: 0;
-}
-
-
-/* ====== LEFT PANEL — Vertical Title ====== */
-.activities-label-panel {
-    flex: 0 0 180px;
-    background: var(--activities-label-surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    isolation: isolate;
-    padding: 2.5rem 1rem;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
-}
-
-/* Keep the label panel solid so it matches its tangent caps */
-.activities-label-panel .shimmer-overlay {
-    display: none;
-}
-
-/* Two-line vertical text */
-.activities-label-text {
-    display: flex;
-    flex-direction: row;
-    gap: 0.8rem;
-    position: relative;
-    z-index: 2;
-}
-
-.label-line {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    font-family: 'Outfit', sans-serif;
-    font-size: 2.6rem;
-    font-weight: 800;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #312435;
-    text-shadow: none;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-/* ====== RIGHT PANEL — Activity Strips ====== */
-.activities-strips {
-    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     flex-direction: column;
-}
-
-/* ====== INDIVIDUAL STRIP ====== */
-.activity-strip {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem 2rem;
+    gap: 2rem;
     position: relative;
-    isolation: isolate;
-    /* overflow on strip must remain visible if flares are going to stick out! */
-    cursor: default;
-    transition: flex 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Strip inner content layout */
-.strip-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-}
-
-/* Icon container */
-.strip-icon {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.activities-header {
+    max-width: 920px;
     opacity: 0;
-    transform: translateX(-12px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.activity-strip:hover .strip-icon {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.strip-icon svg {
-    width: 28px;
-    height: 28px;
-    stroke-width: 2;
-}
-
-/* Main text */
-.strip-text {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    transition: transform 0.35s ease, letter-spacing 0.35s ease;
-    text-align: center;
-}
-
-.activity-strip:hover .strip-text {
-    letter-spacing: 3px;
-}
-
-/* Subtle shine sweep on hover */
-/* ====== STRIP COLOR PALETTE — Site theme colors ====== */
-/* 1. Rich Amber/Gold */
-.strip-amber {
-    background: linear-gradient(135deg, #E8971A 0%, #d4850f 100%);
-}
-
-/* 2. Deep Warm Gold */
-.strip-gold {
-    background: linear-gradient(135deg, #ebd234 0%, #d4b82a 100%);
-    color: #0d0d0d;
-}
-
-.strip-gold .strip-text {
-    color: #0d0d0d;
-    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
-}
-
-.strip-gold .strip-icon svg {
-    color: #0d0d0d;
-}
-
-/* 3. Deep Teal/Blue */
-.strip-teal {
-    background: linear-gradient(135deg, #324F6C 0%, #2a4259 100%);
-}
-
-/* 4. Warm Coral/Orange */
-.strip-coral {
-    background: linear-gradient(135deg, #e06543 0%, #c24f32 100%);
-}
-
-/* 5. Rich Purple */
-.strip-purple {
-    background: linear-gradient(135deg, #6b3a7d 0%, #4e2a5c 100%);
-}
-
-/* ====== SCROLL-IN ANIMATION ====== */
-.activity-strip {
-    opacity: 0;
-    transform: translateX(60px);
-}
-
-.activity-strip.strip-visible {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        flex 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.activity-strip:nth-child(1) {
-    transition-delay: 0.05s;
-}
-
-.activity-strip:nth-child(2) {
-    transition-delay: 0.12s;
-}
-
-.activity-strip:nth-child(3) {
-    transition-delay: 0.19s;
-}
-
-.activity-strip:nth-child(4) {
-    transition-delay: 0.26s;
-}
-
-.activity-strip:nth-child(5) {
-    transition-delay: 0.33s;
-}
-
-.activities-label-panel {
-    opacity: 0;
-    transform: translateX(-40px);
+    transform: translateY(24px);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
         transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.activities-label-panel.label-visible {
+.activities-header.header-visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
-/* ====== RESPONSIVE ====== */
-@media (max-width: 900px) {
-    .activities-label-panel {
-        flex: 0 0 130px;
+.activities-title {
+    margin: 0 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.5rem 1rem;
+    line-height: 1.02;
+}
+
+.activities-title-main {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+.activities-title-highlight {
+    font-family: 'Shine Bubble', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #ebd234;
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    text-shadow: 0 8px 24px rgba(235, 210, 52, 0.2);
+}
+
+.activities-description {
+    margin: 0;
+    max-width: 700px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.activity-card {
+    --activity-accent: #ebd234;
+    --activity-accent-soft: rgba(235, 210, 52, 0.18);
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(10, 14, 22, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    isolation: isolate;
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.activity-card:nth-child(4),
+.activity-card:nth-child(5) {
+    grid-column: span 3;
+}
+
+.activity-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--activity-accent-soft), transparent 52%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.activity-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.activity-card.card-visible:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.34);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.activity-card-visual {
+    position: relative;
+    min-height: 170px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.78) 100%);
+}
+
+.activity-card-visual::before {
+    content: '';
+    position: absolute;
+    inset: 20px 18px 30px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--activity-accent-soft), rgba(255, 255, 255, 0.26));
+    border: 1px solid rgba(255, 255, 255, 0.62);
+}
+
+.activity-index {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(26, 30, 40, 0.42);
+}
+
+.activity-icon-shell {
+    position: relative;
+    z-index: 2;
+    width: 94px;
+    height: 94px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--activity-accent);
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.52));
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
+.activity-pill {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    color: #1c2029;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.activity-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.55rem 1.5rem 1.45rem;
+    margin-top: -18px;
+    position: relative;
+    z-index: 1;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    background: linear-gradient(180deg, rgba(19, 24, 34, 0.86) 0%, rgba(8, 11, 18, 0.97) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.activity-card-title {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.activity-card-description {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.activity-list-label {
+    margin: 0.1rem 0 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--activity-accent);
+}
+
+.activity-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+}
+
+.activity-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.activity-points li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin-top: 0.45rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--activity-accent);
+    box-shadow: 0 0 16px var(--activity-accent-soft);
+}
+
+.activity-outcome {
+    margin: auto 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.activity-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.activity-card:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.activity-card:nth-child(3) {
+    transition-delay: 0.19s;
+}
+
+.activity-card:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.activity-card:nth-child(5) {
+    transition-delay: 0.33s;
+}
+
+.tone-amber {
+    --activity-accent: #e8971a;
+    --activity-accent-soft: rgba(232, 151, 26, 0.2);
+}
+
+.tone-teal {
+    --activity-accent: #5799ba;
+    --activity-accent-soft: rgba(87, 153, 186, 0.2);
+}
+
+.tone-gold {
+    --activity-accent: #ebd234;
+    --activity-accent-soft: rgba(235, 210, 52, 0.2);
+}
+
+.tone-purple {
+    --activity-accent: #9a5bbf;
+    --activity-accent-soft: rgba(154, 91, 191, 0.2);
+}
+
+.tone-blue {
+    --activity-accent: #4a7dd4;
+    --activity-accent-soft: rgba(74, 125, 212, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .activities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .label-line {
-        font-size: 2rem;
-    }
-
-    .strip-text {
-        font-size: 1.2rem;
+    .activity-card,
+    .activity-card:nth-child(4),
+    .activity-card:nth-child(5) {
+        grid-column: span 1;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
     .activities-section {
         padding: 4rem 0;
     }
 
     .activities-container {
-        flex-direction: column;
+        padding: 0 1.2rem;
+        gap: 1.5rem;
     }
 
-    .activities-label-text {
-        flex-direction: column;
-        gap: 0;
+    .activities-title {
+        gap: 0.35rem 0.75rem;
     }
 
-    .label-line {
-        writing-mode: horizontal-tb;
-        text-orientation: initial;
-        transform: none;
-        font-size: 2rem;
+    .activities-title-main {
+        font-size: clamp(1.85rem, 8vw, 2.5rem);
     }
 
-    .activity-strip {
-        padding: 1.2rem 1.5rem;
-        min-height: 64px;
+    .activities-title-highlight {
+        font-size: clamp(1.9rem, 8.2vw, 2.6rem);
     }
 
-    .strip-text {
-        font-size: 1.05rem;
+    .activities-description {
+        font-size: 1rem;
+        line-height: 1.7;
     }
 
-    .strip-icon {
-        opacity: 1;
-        transform: translateX(0);
-        width: 24px;
-        height: 24px;
+    .activities-grid {
+        gap: 1.1rem;
     }
 
-    .strip-icon svg {
-        width: 20px;
-        height: 20px;
+    .activity-card {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .activities-grid {
+        grid-template-columns: 1fr;
     }
 
-    /* Hide tricky desktop-only flares on mobile layout since it stacks differently */
-    .activities-label-panel::before,
-    .activities-label-panel::after,
-    .activity-strip:first-child::before,
-    .activity-strip:last-child::after {
-        display: none;
+    .activity-card {
+        min-height: unset;
+    }
+
+    .activity-card-visual {
+        min-height: 155px;
+        padding: 1rem;
+    }
+
+    .activity-card-visual::before {
+        inset: 18px 16px 26px;
+    }
+
+    .activity-icon-shell {
+        width: 84px;
+        height: 84px;
+    }
+
+    .activity-card-body {
+        padding: 1.4rem 1.2rem 1.25rem;
+    }
+
+    .activity-card-title {
+        font-size: 1.3rem;
+    }
+
+    .activity-card-description,
+    .activity-points li,
+    .activity-outcome {
+        font-size: 0.92rem;
+        line-height: 1.6;
     }
 }

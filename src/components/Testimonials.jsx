@@ -49,7 +49,9 @@ export default function Testimonials() {
             <div className="testimonials-container">
 
                 <div className="testimonials-header">
-                    <h3 className="testimonials-heading">What our attendees said</h3>
+                    <h3 className="testimonials-heading">
+                        What our <span className="bubble-text-yellow">attendees</span> said
+                    </h3>
                     <p className="testimonials-subheading">
                         Real stories from the{' '}
                         <span className="testimonials-title-styled">

@@ -2,13 +2,14 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Collaboration from './components/Collaboration'
+import Highlights from './components/Highlights'
 import About from './components/About'
 import PartnersTicker from './components/PartnersTicker'
 import FloatingMascot from './components/FloatingMascot'
 import Speakers from './components/Speakers'
 import Activities from './components/Activities'
 import Testimonials from './components/Testimonials'
+import FAQ from './components/FAQ'
 import SeoMeta from './components/SeoMeta'
 import Register from './pages/Register'
 import Admin from './pages/Admin'
@@ -32,11 +33,12 @@ function App() {
               <div className="ambient-noise"></div>
 
               <div className="lively-content-pane">
-                <Collaboration />
+                <Highlights />
                 <About />
                 <Speakers />
                 <Activities />
                 <Testimonials />
+                <FAQ />
               </div>
             </div>
           </main>

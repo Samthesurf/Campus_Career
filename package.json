@@ -13,6 +13,7 @@
     "cf:deploy:prod": "npm run build && wrangler pages deploy dist --project-name=campustocareer --branch=main"
   },
   "dependencies": {
+    "lucide-react": "^0.577.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",

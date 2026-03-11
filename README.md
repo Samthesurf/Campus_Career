@@ -38,4 +38,4 @@ Set a production URL before your deploy/build so canonical URLs and sitemap entr
 SITE_URL=https://your-domain.com npm run build
 ```
 
-If `SITE_URL` is not provided, the generator falls back to `VERCEL_URL` (if available) or `https://example.com`.
+If `SITE_URL` is not provided, the generator falls back to `VERCEL_URL` (if available) or `https://campustocareer.pages.dev`.

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Collaboration.css';
+import './Highlights.css';
 
 // Import images
 import israelAesa from '../assets/Israel_AESA.jpg';
@@ -26,7 +26,7 @@ const imageData = [
     },
     {
         src: speakerStage,
-        caption: 'Oluwarantimi shared insights and words of advice for the students',
+        caption: 'Oluwarantimi, giving a masterclass on CV and Resume writing',
     },
     {
         src: formerEvent1,
@@ -42,7 +42,7 @@ const imageData = [
     },
     {
         src: randomCrowd,
-        caption: 'The amazing crowd at Campus to Career',
+        caption: 'The amazing audience at Campus to Career',
     },
 ];
 
