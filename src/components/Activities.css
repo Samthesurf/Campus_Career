@@ -69,6 +69,7 @@
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 1.5rem;
+    align-items: start;
 }
 
 .activity-card {
@@ -77,7 +78,7 @@
     grid-column: span 2;
     display: flex;
     flex-direction: column;
-    min-height: 430px;
+    align-self: start;
     position: relative;
     border-radius: 28px;
     overflow: hidden;
@@ -164,30 +165,11 @@
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
 }
 
-.activity-pill {
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 0.85rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.74);
-    border: 1px solid rgba(255, 255, 255, 0.82);
-    color: #1c2029;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-}
 
 .activity-card-body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
     padding: 1.55rem 1.5rem 1.45rem;
     margin-top: -18px;
     position: relative;
@@ -197,6 +179,55 @@
     background: linear-gradient(180deg, rgba(19, 24, 34, 0.86) 0%, rgba(8, 11, 18, 0.97) 100%);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+}
+
+.activity-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.activity-expand-btn {
+    background: transparent;
+    border: none;
+    color: var(--activity-accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.activity-expand-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.activity-card-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    overflow: hidden;
+}
+
+.activity-card-content.content-expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+.activity-card-content > * {
+    overflow: hidden;
+}
+
+.activity-card-content-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-height: 0;
 }
 
 .activity-card-title {
@@ -351,7 +382,7 @@
     }
 
     .activity-card {
-        min-height: 400px;
+        min-height: unset;
     }
 }
 

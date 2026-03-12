@@ -1,14 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Activities.css';
 
-import { FileText, Linkedin, Globe, Mic, MonitorPlay } from 'lucide-react';
+import { FileText, Globe, Mic, MonitorPlay, ChevronDown, ChevronUp } from 'lucide-react';
+
+const Linkedin = ({ color = 'currentColor', size = 24, strokeWidth = 2, className, ...props }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={`lucide lucide-linkedin ${className || ''}`}
+        {...props}
+    >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+    </svg>
+);
 
 const activities = [
     {
         title: 'CV / Resume Creation',
         tone: 'amber',
         Icon: FileText,
-        category: 'Document workshop',
         description:
             'Create a polished resume that presents your projects, achievements, and leadership in a format that feels focused and recruiter-friendly.',
         points: [
@@ -16,13 +35,11 @@ const activities = [
             'Sharper bullet writing with measurable impact',
             'Quick feedback you can apply immediately',
         ],
-        outcome: 'Walk away with a stronger draft ready for internship and job applications.',
-    },
+        Speakers    },
     {
         title: 'LinkedIn Building',
         tone: 'teal',
         Icon: Linkedin,
-        category: 'Profile upgrade',
         description:
             'Refine your LinkedIn presence so your headline, summary, featured section, and experience tell a stronger story to recruiters and collaborators.',
         points: [
@@ -36,7 +53,6 @@ const activities = [
         title: 'Global Scholarship',
         tone: 'gold',
         Icon: Globe,
-        category: 'Opportunity strategy',
         description:
             'Understand how to approach scholarships with better planning, clearer positioning, and stronger application materials from the start.',
         points: [
@@ -50,11 +66,10 @@ const activities = [
         title: 'Entrepreneurs Talk',
         tone: 'purple',
         Icon: Mic,
-        category: 'Founder insights',
         description:
             'Hear practical lessons from entrepreneurs on building ideas, making decisions, learning from setbacks, and creating momentum from limited resources.',
         points: [
-            'Real stories from founders and builders',
+            'Real stories from student entrepreneurs, founders and builders',
             'Perspective on risk, resilience, and growth',
             'Space for questions and live interaction',
         ],
@@ -64,7 +79,6 @@ const activities = [
         title: 'Content Creators',
         tone: 'blue',
         Icon: MonitorPlay,
-        category: 'Personal brand',
         description:
             'See how creators turn content into influence by communicating clearly, staying consistent, and building communities around their work.',
         points: [
@@ -75,6 +89,53 @@ const activities = [
         outcome: 'Leave with ideas for building a stronger and more intentional public presence.',
     },
 ];
+
+const ActivityCard = ({ activity, index, visible }) => {
+    const [isExpanded, setIsExpanded] = useState(true);
+
+    return (
+        <article
+            className={`activity-card tone-${activity.tone} ${visible ? 'card-visible' : ''} ${isExpanded ? 'is-expanded' : ''}`}
+        >
+            <div className="activity-card-visual">
+                <span className="activity-index">{`0${index + 1}`}</span>
+                <div className="activity-icon-shell" aria-hidden="true">
+                    <activity.Icon size={34} strokeWidth={2} />
+                </div>
+            </div>
+
+            <div className="activity-card-body">
+                <div className="activity-card-header">
+                    <h3 className="activity-card-title">{activity.title}</h3>
+                    <button
+                        type="button"
+                        className="activity-expand-btn"
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? "Collapse details" : "Expand details"}
+                        onClick={() => setIsExpanded((expanded) => !expanded)}
+                    >
+                        {isExpanded ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                    </button>
+                </div>
+                
+                <div className={`activity-card-content ${isExpanded ? 'content-expanded' : ''}`}>
+                    <div className="activity-card-content-inner">
+                        <p className="activity-card-description">{activity.description}</p>
+
+                        <p className="activity-list-label">What you will get</p>
+                        <ul className="activity-points">
+                            {activity.points.map((point) => (
+                                <li key={point}>{point}</li>
+                            ))}
+                        </ul>
+
+                        <p className="activity-outcome">{activity.outcome}</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    );
+};
 
 const Activities = () => {
     const sectionRef = useRef(null);
@@ -115,32 +176,12 @@ const Activities = () => {
 
                 <div className="activities-grid">
                     {activities.map((activity, index) => (
-                        <article
-                            className={`activity-card tone-${activity.tone} ${visible ? 'card-visible' : ''}`}
-                            key={activity.title}
-                        >
-                            <div className="activity-card-visual">
-                                <span className="activity-index">{`0${index + 1}`}</span>
-                                <div className="activity-icon-shell" aria-hidden="true">
-                                    <activity.Icon size={34} strokeWidth={2} />
-                                </div>
-                                <span className="activity-pill">{activity.category}</span>
-                            </div>
-
-                            <div className="activity-card-body">
-                                <h3 className="activity-card-title">{activity.title}</h3>
-                                <p className="activity-card-description">{activity.description}</p>
-
-                                <p className="activity-list-label">What you will get</p>
-                                <ul className="activity-points">
-                                    {activity.points.map((point) => (
-                                        <li key={point}>{point}</li>
-                                    ))}
-                                </ul>
-
-                                <p className="activity-outcome">{activity.outcome}</p>
-                            </div>
-                        </article>
+                        <ActivityCard 
+                            key={activity.title} 
+                            activity={activity} 
+                            index={index} 
+                            visible={visible} 
+                        />
                     ))}
                 </div>
             </div>

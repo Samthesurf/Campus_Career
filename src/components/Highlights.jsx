@@ -78,7 +78,7 @@ const PicShuffler = () => {
     };
 
     return (
-        <section className="pic-shuffler-section">
+        <section id="highlights" className="pic-shuffler-section">
             {/* 4 faint vertical divider lines */}
             <div className="section-lines">
                 <div className="section-line"></div>

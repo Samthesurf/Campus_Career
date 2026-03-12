@@ -42,7 +42,7 @@ export default function Testimonials() {
     };
 
     return (
-        <section className="testimonials-section">
+        <section id="testimonials" className="testimonials-section">
             {/* Background Big Text */}
             <h2 className="testimonials-bg-text" aria-hidden="true">TESTIMONIALS</h2>
 

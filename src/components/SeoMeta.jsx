@@ -112,7 +112,7 @@ const SeoMeta = () => {
         '@type': 'Organization',
         name: 'Campus to Career',
         url: canonicalUrl,
-        logo: `${origin}/favicon.svg`,
+        logo: `${origin}/favicon.png`,
       },
       {
         '@context': 'https://schema.org',

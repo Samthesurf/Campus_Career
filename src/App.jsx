@@ -13,6 +13,7 @@ import FAQ from './components/FAQ'
 import SeoMeta from './components/SeoMeta'
 import Register from './pages/Register'
 import Admin from './pages/Admin'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
       </Routes>
 
+      <Footer />
       <FloatingMascot />
     </div>
   )
