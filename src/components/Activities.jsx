@@ -35,7 +35,8 @@ const activities = [
             'Sharper bullet writing with measurable impact',
             'Quick feedback you can apply immediately',
         ],
-        Speakers    },
+        outcome: 'Walk away with a resume that reflects your strengths clearly and confidently.',
+    },
     {
         title: 'LinkedIn Building',
         tone: 'teal',
