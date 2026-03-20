@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../assets/FRONT BLACK.png';
+import { calendarUrl, eventDetails } from '../data/eventDetails.js';
 
 const Footer = () => {
   const location = useLocation();
-  const calendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Campus+to+Career+2.0&dates=20260411T090000Z/20260411T170000Z&details=BUILD+YOUR+FUTURE,+CHANGE+YOUR+MINDSET,+POSITION+YOURSELF&location=Afe+Babalola+University";
 
   if (location.pathname === '/register') {
     return (
@@ -60,7 +60,7 @@ const Footer = () => {
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              Afe Babalola University
+              {eventDetails.locationLabel}
             </div>
             <div className="footer-phone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}>

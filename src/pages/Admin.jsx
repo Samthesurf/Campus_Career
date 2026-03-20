@@ -5,7 +5,7 @@ import {
 } from 'recharts';
 import './Admin.css';
 
-const COLORS = ['#E8971A', '#5799BA', '#ffd700', '#324F6C', '#8b5cf6', '#ebd234'];
+const COLORS = ['#E8971A', '#5799BA', '#ffd700', '#324F6C', '#8b5cf6', '#fed23f'];
 
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,7 +28,7 @@ const Admin = () => {
         } else {
           setIsLoading(false);
         }
-      } catch (err) {
+      } catch {
         setIsLoading(false);
       }
     };
@@ -54,7 +54,7 @@ const Admin = () => {
         const result = await response.json();
         setLoginError(result.error || 'Invalid password');
       }
-    } catch (err) {
+    } catch {
       setLoginError('Error connecting to server');
     } finally {
       setIsLoggingIn(false);
@@ -75,8 +75,8 @@ const Admin = () => {
       
       const result = await response.json();
       setData(result);
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -97,7 +97,7 @@ const Admin = () => {
         const result = await response.json();
         alert(result.error || 'Failed to delete registration');
       }
-    } catch (err) {
+    } catch {
       alert('Error connecting to server');
     }
   };

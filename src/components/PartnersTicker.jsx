@@ -3,11 +3,19 @@ import './PartnersTicker.css';
 import asvaPreparedLogo from '../../assets/ASVA_prepared.png';
 import besaPreparedLogo from '../../assets/BESA_prepared.png';
 import aesaPreparedLogo from '../../assets/AESA_prepared_brand.png';
+import srcLogo from '../../assets/SRC_logo_2_E8971A.png';
 
 const TICKER_ITEMS = [
     { type: 'label', text: 'Partnering With' },
+    { type: 'name', text: 'APWEN' },
     { type: 'name', text: 'COMSSA' },
-    { type: 'name', text: 'SRC' },
+    {
+        type: 'name-with-logo',
+        text: 'SRC',
+        src: srcLogo,
+        alt: 'SRC logo',
+        logoClass: 'ticker-logo-src',
+    },
     {
         type: 'name-with-logo',
         text: 'BESA',

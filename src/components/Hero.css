@@ -225,7 +225,7 @@
 
 /* Tagline fade in from below */
 .hero-tagline {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: #fff;
     font-weight: 800;
     letter-spacing: 2px;
@@ -279,7 +279,7 @@
 .bubble-text-yellow {
     font-family: 'Shine Bubble', sans-serif;
     font-size: 4.5rem;
-    color: #ebd234;
+    color: #fed23f;
     letter-spacing: 2px;
     line-height: 1.1;
     /* Keep yellow readable */

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Register.css';
 import FloatingMascot from '../components/FloatingMascot';
+import { calendarUrl, eventDetails } from '../data/eventDetails.js';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -58,8 +59,6 @@ const Register = () => {
   };
 
   if (status === 'success') {
-    const calendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Campus+to+Career+2.0&dates=20260411T090000Z/20260411T170000Z&details=BUILD+YOUR+FUTURE,+CHANGE+YOUR+MINDSET,+POSITION+YOURSELF&location=Afe+Babalola+University";
-
     return (
       <div className="register-page">
         <div className="ambient-glow-bg"></div>
@@ -77,7 +76,10 @@ const Register = () => {
               <span className="register-version-small">2.0</span>
             </span>.
           </p>
-          <p>We've received your details and can't wait to see you there!</p>
+          <p>
+            We&apos;ve received your details and can&apos;t wait to see you on{' '}
+            {eventDetails.shortDateWithYear} at {eventDetails.locationLabel}.
+          </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '1.5rem', flexWrap: 'wrap' }}>
             <a href="/" className="btn-primary back-home-btn" style={{ margin: 0 }}>Back to Home</a>
             <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
@@ -192,12 +194,12 @@ const Register = () => {
             <label>What caught your interest? <span className="required">*</span></label>
             <div className="radio-group">
               {[
-                'Global Scholarships',
-                'CV, interview, cover letter',
-                'LinkedIn',
-                'Founders Panel',
-                'Content Creators panel',
-                'Giveaway'
+                'Networking and LinkedIn spotlight',
+                'Systems and Structures panel',
+                'Keynote and fireside chat',
+                'My Becoming stories',
+                'Mentorship and alumni networking',
+                'Next-day career workshop'
               ].map(interest => (
                 <label key={interest} className="radio-label">
                   <input
@@ -221,6 +223,7 @@ const Register = () => {
               {[
                 'Billboard',
                 'Group chat',
+                'APWEN',
                 'AESA',
                 'COMSSA',
                 'ASVA',

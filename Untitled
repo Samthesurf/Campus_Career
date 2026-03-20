@@ -1,0 +1,3 @@
+Please do some research on how to integrate ticketing into this site with Selar, don't write any code and put your research in an md
+  file. I want such that if they register, it shows a downloadable image with a qr code in it for them to use to show on that day of
+  the event, and also the event will be paid, but I will integrate payment later

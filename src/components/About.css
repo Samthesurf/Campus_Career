@@ -92,8 +92,44 @@
     margin: 0;
 }
 
+.about-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    width: 100%;
+    max-width: 620px;
+    margin-top: 1.75rem;
+}
+
+.about-fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem 1.1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.about-fact-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.about-fact strong {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: #fff;
+}
+
 /* Secondary Button styles (for About Section) */
-.btn-secondary {
+.about-action-secondary {
     background-color: transparent;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -107,31 +143,39 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
+    text-decoration: none;
 }
 
-.btn-secondary:hover {
+.about-action-secondary:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.8);
     transform: translateY(-2px);
 }
 
-.btn-secondary:active {
+.about-action-secondary:active {
     transform: translateY(0);
 }
 
-.btn-secondary svg {
+.about-action-secondary svg {
     transition: transform 0.25s ease;
 }
 
-.btn-secondary:hover svg {
+.about-action-secondary:hover svg {
     transform: translateX(4px);
 }
 
-.about-read-more {
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-top: 2rem;
+}
+
+.about-read-more {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
+    text-decoration: none;
 }
 
 .about-read-more svg {
@@ -225,6 +269,14 @@
     .about-title-main {
         justify-content: center;
     }
+
+    .about-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-actions {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 700px) {
@@ -268,7 +320,12 @@
         line-height: 1.72;
     }
 
-    .about-read-more {
+    .about-facts {
+        grid-template-columns: 1fr;
+        margin-top: 1.4rem;
+    }
+
+    .about-actions {
         margin-top: 1.4rem;
     }
 }
@@ -278,7 +335,7 @@
         padding: 4rem 1rem;
     }
 
-    .btn-secondary {
+    .about-action-secondary {
         padding: 0.72rem 1.25rem;
         font-size: 0.9rem;
     }
@@ -293,7 +350,7 @@
         font-size: 0.96rem;
     }
 
-    .about-read-more {
+    .about-actions a {
         display: flex;
         width: 100%;
         justify-content: center;

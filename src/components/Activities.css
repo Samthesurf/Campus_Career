@@ -51,10 +51,10 @@
 .activities-title-highlight {
     font-family: 'Shine Bubble', sans-serif;
     font-size: clamp(2rem, 5vw, 3rem);
-    color: #ebd234;
+    color: #fed23f;
     letter-spacing: 0.04em;
     line-height: 0.9;
-    text-shadow: 0 8px 24px rgba(235, 210, 52, 0.2);
+    text-shadow: 0 8px 24px rgba(254, 210, 63, 0.22);
 }
 
 .activities-description {
@@ -73,8 +73,8 @@
 }
 
 .activity-card {
-    --activity-accent: #ebd234;
-    --activity-accent-soft: rgba(235, 210, 52, 0.18);
+    --activity-accent: #fed23f;
+    --activity-accent-soft: rgba(254, 210, 63, 0.18);
     grid-column: span 2;
     display: flex;
     flex-direction: column;
@@ -324,8 +324,8 @@
 }
 
 .tone-gold {
-    --activity-accent: #ebd234;
-    --activity-accent-soft: rgba(235, 210, 52, 0.2);
+    --activity-accent: #fed23f;
+    --activity-accent-soft: rgba(254, 210, 63, 0.2);
 }
 
 .tone-purple {

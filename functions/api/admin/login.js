@@ -28,7 +28,7 @@ export async function onRequestPost(context) {
         'Set-Cookie': cookieHeader
       }
     });
-  } catch (error) {
+  } catch {
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }

@@ -1,92 +1,73 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Activities.css';
 
-import { FileText, Globe, Mic, MonitorPlay, ChevronDown, ChevronUp } from 'lucide-react';
-
-const Linkedin = ({ color = 'currentColor', size = 24, strokeWidth = 2, className, ...props }) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke={color}
-        strokeWidth={strokeWidth}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={`lucide lucide-linkedin ${className || ''}`}
-        {...props}
-    >
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect width="4" height="12" x="2" y="9" />
-        <circle cx="4" cy="4" r="2" />
-    </svg>
-);
+import { FileText, Globe, Mic, MonitorPlay, ChevronDown, ChevronUp, Users } from 'lucide-react';
 
 const activities = [
     {
-        title: 'CV / Resume Creation',
+        title: 'Networking Icebreaker',
         tone: 'amber',
-        Icon: FileText,
+        Icon: Users,
         description:
-            'Create a polished resume that presents your projects, achievements, and leadership in a format that feels focused and recruiter-friendly.',
+            'The day starts with registration, pictures, community buzz, and an ice-breaker session that puts intentional networking and LinkedIn visibility in focus from the very beginning.',
         points: [
-            'ATS-aware structure and formatting tips',
-            'Sharper bullet writing with measurable impact',
-            'Quick feedback you can apply immediately',
+            'Registration opens from 8:30am with room for pictures and social buzz',
+            'Early networking session with a spotlight on LinkedIn presence',
+            'A low-pressure way to start conversations before the main sessions begin',
         ],
-        Speakers    },
-    {
-        title: 'LinkedIn Building',
-        tone: 'teal',
-        Icon: Linkedin,
-        description:
-            'Refine your LinkedIn presence so your headline, summary, featured section, and experience tell a stronger story to recruiters and collaborators.',
-        points: [
-            'Intentional profile positioning',
-            'Headline and summary improvements',
-            'Networking and visibility suggestions',
-        ],
-        outcome: 'Make your online profile easier to discover, understand, and trust.',
+        outcome: 'Arrive seen, connected, and ready to make the most of the day.',
     },
     {
-        title: 'Global Scholarship',
-        tone: 'gold',
+        title: 'Systems and Structures Panel',
+        tone: 'teal',
         Icon: Globe,
         description:
-            'Understand how to approach scholarships with better planning, clearer positioning, and stronger application materials from the start.',
+            'The first panel explores the systems and structures that foster all-round excellence, helping students think beyond motivation and toward sustainable growth.',
         points: [
-            'Smarter opportunity shortlisting',
-            'Direction for essays and personal statements',
-            'Better preparation for supporting documents',
+            'Real conversations about discipline, environment, and long-term excellence',
+            'Industry-facing insight into what growth looks like outside the classroom',
+            'Practical perspective on how strong systems shape strong outcomes',
         ],
-        outcome: 'Leave with a clearer game plan for competitive scholarship applications.',
+        outcome: 'Leave with a clearer framework for building a more intentional student journey.',
     },
     {
-        title: 'Entrepreneurs Talk',
-        tone: 'purple',
+        title: 'Keynote and Fireside Chat',
+        tone: 'gold',
         Icon: Mic,
         description:
-            'Hear practical lessons from entrepreneurs on building ideas, making decisions, learning from setbacks, and creating momentum from limited resources.',
+            'A keynote session and fireside chat anchor the event with deeper reflections on growth, opportunity, and what it means to keep becoming in a competitive world.',
         points: [
-            'Real stories from student entrepreneurs, founders and builders',
-            'Perspective on risk, resilience, and growth',
-            'Space for questions and live interaction',
+            'Keynote insight designed to challenge how students think about their future',
+            'Guest and sponsor contributions that connect ideas to real-world context',
+            'A fireside chat format that keeps the conversation grounded and relatable',
         ],
-        outcome: 'Gain practical insight you can apply to your own projects and goals.',
+        outcome: 'Gain perspective that stretches both mindset and ambition.',
     },
     {
-        title: 'Content Creators',
-        tone: 'blue',
+        title: 'My Becoming Stories',
+        tone: 'purple',
         Icon: MonitorPlay,
         description:
-            'See how creators turn content into influence by communicating clearly, staying consistent, and building communities around their work.',
+            'The second panel centers on lived experience. Through stories, Q&A, and the BECOMERS spotlight, attendees see that growth is a process, not a one-time event.',
         points: [
-            'Content planning and positioning basics',
-            'Audience engagement habits that matter',
-            'Ways digital presence can support career growth',
+            'A panel theme built around "My Becoming" and personal process',
+            'Story-driven learning that makes growth feel practical and human',
+            'A spotlight on participants who can tell the story of their process well',
         ],
-        outcome: 'Leave with ideas for building a stronger and more intentional public presence.',
+        outcome: 'Walk away with stronger process-awareness and a healthier view of progress.',
+    },
+    {
+        title: 'Mentorship and Career Follow-Through',
+        tone: 'blue',
+        Icon: FileText,
+        description:
+            'Campus to Career 2.0 extends beyond the auditorium through alumni mentorship, sponsor engagement booths, and a next-day virtual workshop on practical career tools.',
+        points: [
+            'Networking and mentorship opportunities with alumni and guests',
+            'Post-event sponsor booths, pictures, and continued relationship-building',
+            'Follow-up workshop support around scholarships, CV writing, profile building, and continuous professional development',
+        ],
+        outcome: 'Leave with momentum, support, and next steps you can act on after the event.',
     },
 ];
 
@@ -168,9 +149,9 @@ const Activities = () => {
                         <span className="activities-title-highlight">EXPECT</span>
                     </h2>
                     <p className="activities-description">
-                        Each activity is designed to be practical, approachable, and valuable beyond the
-                        event itself. Instead of only introducing ideas, the sessions help students leave
-                        with clearer direction and something they can build on right away.
+                        Campus to Career 2.0 is structured as a full experience, not just a lineup of
+                        talks. From networking and panel conversations to mentorship and next-day career
+                        support, every part of the program is built to help students keep becoming.
                     </p>
                 </div>
 

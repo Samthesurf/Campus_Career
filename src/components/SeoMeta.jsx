@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { eventDetails } from '../data/eventDetails.js';
 
-const HOME_TITLE = 'Campus to Career 2.0 in ABUAD | Student Career Event';
+const HOME_TITLE = 'Campus to Career 2.0 | The Becoming at ABUAD';
 const HOME_DESCRIPTION =
-  'Campus to Career 2.0 at Afe Babalola University (ABUAD) helps students move from campus life to practical career outcomes through mentorship and real-world insights.';
+  'Campus to Career 2.0 returns on May 2nd, 2026 at Alfa Belgore Hall, ABUAD, with The Becoming theme focused on personal growth, branding, mentorship, and career readiness.';
 const HOME_KEYWORDS =
-  'campus to career, campus to career abuad, campus to career in abuad, student career event nigeria, afe babalola university career event';
+  'campus to career, campus to career 2.0, the becoming, campus to career abuad, student career event nigeria, alfa belgore hall, afe babalola university career event';
 
 const upsertMeta = (selector, attributes) => {
   let meta = document.head.querySelector(selector);
@@ -44,11 +46,36 @@ const upsertStructuredData = (id, payload) => {
   script.textContent = JSON.stringify(payload);
 };
 
+const buildEventSchema = (canonicalUrl, imageUrl) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: eventDetails.name,
+  description:
+    'Student-focused event bridging academic learning and real-world careers through personal development, mentorship, networking, and actionable guidance.',
+  startDate: eventDetails.startDateTime,
+  endDate: eventDetails.endDateTime,
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  image: [imageUrl],
+  location: {
+    '@type': 'Place',
+    name: eventDetails.locationFull,
+    address: eventDetails.city,
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'Campus to Career',
+    url: canonicalUrl,
+  },
+});
+
 const SeoMeta = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const origin = window.location.origin;
-    const canonicalUrl = `${origin}/`;
     const imageUrl = `${origin}/og-image.svg`;
+    const canonicalUrl = `${origin}/`;
 
     document.title = HOME_TITLE;
 
@@ -114,35 +141,13 @@ const SeoMeta = () => {
         url: canonicalUrl,
         logo: `${origin}/favicon.png`,
       },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Event',
-        name: 'Campus to Career 2.0',
-        description:
-          'Student-focused event bridging campus life to practical career growth through mentorship, founder stories, and actionable guidance.',
-        startDate: '2026-04-11T09:00:00+01:00',
-        endDate: '2026-04-11T17:00:00+01:00',
-        eventStatus: 'https://schema.org/EventScheduled',
-        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-        image: [imageUrl],
-        location: {
-          '@type': 'Place',
-          name: 'Afe Babalola University (ABUAD)',
-          address: 'Ado-Ekiti, Ekiti State, Nigeria',
-        },
-        organizer: {
-          '@type': 'Organization',
-          name: 'Campus to Career',
-          url: canonicalUrl,
-        },
-      },
+      buildEventSchema(canonicalUrl, imageUrl),
     ];
 
     upsertStructuredData('campus-career-seo-schema', schema);
-  }, []);
+  }, [location.pathname]);
 
   return null;
 };
 
 export default SeoMeta;
-

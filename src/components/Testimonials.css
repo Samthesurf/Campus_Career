@@ -205,9 +205,9 @@
 }
 
 .testimonials-nav-btn:hover {
-    border-color: #ebd234;
-    color: #ebd234;
-    background: rgba(235, 210, 52, 0.08);
+    border-color: #fed23f;
+    color: #fed23f;
+    background: rgba(254, 210, 63, 0.1);
 }
 
 .testimonial-author {
@@ -223,7 +223,7 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(235, 210, 52, 0.6), rgba(235, 210, 52, 0.05));
+    background: linear-gradient(135deg, rgba(254, 210, 63, 0.55), rgba(254, 210, 63, 0.06));
     padding: 3px;
     /* border thickness */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
@@ -249,7 +249,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 2rem;
     font-weight: 700;
-    color: #ebd234;
+    color: #fed23f;
 }
 
 .author-info {

@@ -2,20 +2,32 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './FAQ.css';
 import crowdImg from '../assets/crowd_again.jpg';
+import { eventDetails } from '../data/eventDetails.js';
 
 const faqData = [
     {
-        question: "Is it free?",
-        answer: "Yes it is free, come and be ready to learn and leave ready to conquer."
+        question: 'When is Campus to Career 2.0 happening?',
+        answer: `Campus to Career 2.0 takes place on ${eventDetails.fullDateLabel}.`
     },
     {
-        question: "Where will the event take place?",
-        answer: "The event will take place at the heart of the campus, specifically at the Alfa Belgore Hall."
+        question: 'Where will the event take place?',
+        answer: `The event will be held at ${eventDetails.locationFull}.`
     },
     {
-        question: "What should I bring?",
-        answer: "Bring jotters, writing materials, and a willingness to learn. Also, bring your friends, so they can be positively impacted."
-    }
+        question: 'Who should attend?',
+        answer:
+            'The event is designed for undergraduate and postgraduate students, as well as fresh graduates who want clearer direction for life after school.',
+    },
+    {
+        question: 'What should I come prepared for?',
+        answer:
+            'Come ready to learn, network, and reflect. Expect panels, keynote insight, mentorship opportunities, and practical next steps around career growth and personal branding.',
+    },
+    {
+        question: 'Does the event end after the main day?',
+        answer:
+            'No. There are post-event networking moments, sponsor engagement booths, and a follow-up virtual workshop focused on scholarships, CV writing, profile building, and continuous professional development.',
+    },
 ];
 
 const FAQ = () => {

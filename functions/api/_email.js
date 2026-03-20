@@ -11,16 +11,23 @@
  * Prefixed with _ so Pages doesn't expose it as a routable endpoint.
  */
 
+import { CALENDAR_END_UTC, CALENDAR_START_UTC } from '../../shared/calendarConstants.js';
+
 // ─── MailChannels API endpoint ──────────────────────────────────────────────
 const MAILCHANNELS_API = 'https://api.mailchannels.net/tx/v1/send';
 
-// ─── Google Calendar URL (same as Hero section) ─────────────────────────────
+const EVENT_THEME = 'The Becoming';
+const EVENT_DATE_LABEL = 'May 2, 2026';
+const EVENT_TIME_LABEL = '8:30 AM - 2:00 PM';
+const EVENT_LOCATION_LABEL = 'Alfa Belgore Hall, Afe Babalola University (ABUAD)';
+
+// ─── Google Calendar URL (same as Hero / Register / Footer — May 2, 2026) ───
 const CALENDAR_URL =
   'https://calendar.google.com/calendar/render?action=TEMPLATE' +
   '&text=Campus+to+Career+2.0' +
-  '&dates=20260411T090000Z/20260411T170000Z' +
-  '&details=BUILD+YOUR+FUTURE,+CHANGE+YOUR+MINDSET,+POSITION+YOURSELF' +
-  '&location=Afe+Babalola+University';
+  `&dates=${CALENDAR_START_UTC}/${CALENDAR_END_UTC}` +
+  '&details=Theme:+The+Becoming.+A+student-focused+career+development+experience+centered+on+personal+development,+mentorship,+networking,+and+a+builder%27s+mindset.' +
+  '&location=Alfa+Belgore+Hall,+Afe+Babalola+University+(ABUAD)';
 
 // ─── Sender config (update domain when ready) ───────────────────────────────
 const SENDER_EMAIL = 'hello@campustocareer.com';
@@ -86,7 +93,8 @@ export function buildConfirmationHTML(name, details) {
               <p style="margin:0;font-size:15px;line-height:1.7;color:#b0b0c0;">
                 Thank you for registering for <strong style="color:#ffd500;">Campus to Career 2.0</strong>!
                 Your spot has been secured. We're putting together an incredible event packed
-                with insights on scholarships, career prep, and so much more.
+                with conversations, mentorship, and growth moments built around the theme
+                <strong style="color:#ffffff;">${EVENT_THEME}</strong>.
               </p>
             </td>
           </tr>
@@ -133,11 +141,11 @@ export function buildConfirmationHTML(name, details) {
           <tr>
             <td style="padding:24px 32px 8px;text-align:center;">
               <p style="margin:0;font-size:15px;color:#b0b0c0;line-height:1.6;">
-                📅 <strong style="color:#ffffff;">April 11, 2026</strong> &nbsp;·&nbsp;
-                🕘 <strong style="color:#ffffff;">9:00 AM – 5:00 PM</strong>
+                📅 <strong style="color:#ffffff;">${EVENT_DATE_LABEL}</strong> &nbsp;·&nbsp;
+                🕘 <strong style="color:#ffffff;">${EVENT_TIME_LABEL}</strong>
               </p>
               <p style="margin:6px 0 0;font-size:15px;color:#b0b0c0;">
-                📍 <strong style="color:#ffffff;">Afe Babalola University</strong>
+                📍 <strong style="color:#ffffff;">${EVENT_LOCATION_LABEL}</strong>
               </p>
             </td>
           </tr>
@@ -174,7 +182,7 @@ export function buildConfirmationHTML(name, details) {
                 Can't wait to see you there! 🚀
               </p>
               <p style="margin:12px 0 0;font-size:14px;color:#666680;">
-                Build your future. Change your mindset. Position yourself.
+                Keep becoming.
               </p>
             </td>
           </tr>
@@ -183,7 +191,7 @@ export function buildConfirmationHTML(name, details) {
           <tr>
             <td style="background-color:#0e0e16;padding:20px 32px;text-align:center;border-top:1px solid rgba(255,255,255,0.04);">
               <p style="margin:0;font-size:12px;color:#44445a;">
-                Campus to Career 2.0 · Afe Babalola University
+                Campus to Career 2.0 · ${EVENT_LOCATION_LABEL}
               </p>
               <p style="margin:6px 0 0;font-size:12px;color:#44445a;">
                 You received this email because you registered at campustocareer.com
@@ -251,13 +259,14 @@ function buildPlainText(name, details) {
     `Heard From: ${details.heard_from}`,
     '',
     `--- Event Info ---`,
-    `📅 April 11, 2026 · 9:00 AM – 5:00 PM`,
-    `📍 Afe Babalola University`,
+    `📅 ${EVENT_DATE_LABEL} · ${EVENT_TIME_LABEL}`,
+    `📍 ${EVENT_LOCATION_LABEL}`,
+    `🎯 Theme: ${EVENT_THEME}`,
     '',
     `Save the Date: ${CALENDAR_URL}`,
     '',
     `Can't wait to see you there! 🚀`,
-    `Build your future. Change your mindset. Position yourself.`,
+    `Keep becoming.`,
   ].join('\n');
 }
 

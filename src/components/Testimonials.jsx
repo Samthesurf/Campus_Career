@@ -70,7 +70,7 @@ export default function Testimonials() {
                             <div className="testimonial-bubble">
                                 <div className="testimonial-card">
                                     <svg className="quote-mark-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10 36C6 32 4 27.5 4 22C4 13 10 6 20 4L21.5 7.5C16 9.5 12.5 13 12 18C12 18 13 17.5 15 17.5C19.5 17.5 22 20 22 24.5C22 29 19.5 32 15 32C12.5 32 10.5 31 10 36ZM32 36C28 32 26 27.5 26 22C26 13 32 6 42 4L43.5 7.5C38 9.5 34.5 13 34 18C34 18 35 17.5 37 17.5C41.5 17.5 44 20 44 24.5C44 29 41.5 32 37 32C34.5 32 32.5 31 32 36Z" fill="#ebd234" />
+                                        <path d="M10 36C6 32 4 27.5 4 22C4 13 10 6 20 4L21.5 7.5C16 9.5 12.5 13 12 18C12 18 13 17.5 15 17.5C19.5 17.5 22 20 22 24.5C22 29 19.5 32 15 32C12.5 32 10.5 31 10 36ZM32 36C28 32 26 27.5 26 22C26 13 32 6 42 4L43.5 7.5C38 9.5 34.5 13 34 18C34 18 35 17.5 37 17.5C41.5 17.5 44 20 44 24.5C44 29 41.5 32 37 32C34.5 32 32.5 31 32 36Z" fill="#fed23f" />
                                     </svg>
                                     <p className="testimonial-text">
                                         {testimonial.text}

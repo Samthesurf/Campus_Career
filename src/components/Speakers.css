@@ -46,7 +46,7 @@
 .title-year {
   font-family: 'Shine Bubble', sans-serif;
   font-size: 6.5rem;
-  color: #ebd234; /* using the same yellow as hero */
+  color: #fed23f;
   text-transform: none; /* keep original casing for bubble font if needed */
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -85,7 +85,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  border: 4px solid rgba(235, 210, 52, 0.5); /* subtle yellow border */
+  border: 4px solid rgba(254, 210, 63, 0.5);
   box-shadow: 0 8px 20px rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
@@ -99,7 +99,7 @@
 .placeholder-icon {
   font-family: 'Shine Bubble', sans-serif;
   font-size: 5rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(254, 210, 63, 0.28);
 }
 
 .speaker-info {

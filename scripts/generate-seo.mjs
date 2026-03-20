@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { programmaticCampuses } from '../src/data/programmaticCampuses.js';
+import { eventDetails } from '../src/data/eventDetails.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -91,15 +92,15 @@ const renderCampusPage = (campus) => {
     schema.push({
       '@context': 'https://schema.org',
       '@type': 'Event',
-      name: 'Campus to Career 2.0',
+      name: eventDetails.name,
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
       eventStatus: 'https://schema.org/EventScheduled',
-      startDate: '2026-04-11T09:00:00+01:00',
-      endDate: '2026-04-11T17:00:00+01:00',
+      startDate: eventDetails.startDateTime,
+      endDate: eventDetails.endDateTime,
       location: {
         '@type': 'Place',
-        name: 'Afe Babalola University (ABUAD)',
-        address: 'Ado-Ekiti, Ekiti State, Nigeria',
+        name: eventDetails.locationFull,
+        address: eventDetails.city,
       },
       organizer: {
         '@type': 'Organization',
@@ -107,7 +108,7 @@ const renderCampusPage = (campus) => {
         url: siteUrl,
       },
       description:
-        'Campus to Career 2.0 helps students move from school to practical career outcomes through mentorship and industry insight.',
+        'Campus to Career 2.0 helps students move from school to practical career outcomes through mentorship, networking, process-awareness, and industry insight.',
     });
   }
 
@@ -348,7 +349,7 @@ Primary page: ${siteUrl}/
 ABUAD page: ${siteUrl}/campus-to-career-in-abuad/
 
 Preferred citation title: Campus to Career
-Preferred description: Student-focused event and resources bridging campus life to real career outcomes.
+Preferred description: Student-focused event and resources bridging academic learning to real career outcomes through The Becoming theme.
 `;
 
 mkdirSync(publicDir, { recursive: true });

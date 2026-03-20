@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './About.css';
 import entrepreneurSpeakingImg from '../assets/entrepreneur_speaking.jpg';
+import { eventDetails } from '../data/eventDetails.js';
 
 const About = () => {
     return (
@@ -23,19 +25,34 @@ const About = () => {
                     </h2>
 
                     <p className="about-description">
-                        Campus to Career is an event designed to bridge the gap between academic
-                        life and professional success. We bring together student leaders, entrepreneurs,
-                        and mentors to share real-world insights with students, helping them build
-                        their futures, change their mindsets, and position themselves for greatness.
-                        The 2026 edition is focused on students at Afe Babalola University (ABUAD).
+                        Campus to Career 2.0 is a student-focused career development initiative
+                        designed to bridge the gap between academic learning and real-world careers.
+                        This year&apos;s theme, &ldquo;The Becoming,&rdquo; emphasizes personal development,
+                        continuous growth, personal branding, and the builder&apos;s mindset students need
+                        to thrive beyond graduation.
                     </p>
 
+                    <div className="about-facts" aria-label="Event overview">
+                        <div className="about-fact">
+                            <span className="about-fact-label">Theme</span>
+                            <strong>{eventDetails.theme}</strong>
+                        </div>
+                        <div className="about-fact">
+                            <span className="about-fact-label">Date</span>
+                            <strong>{eventDetails.shortDateWithYear}</strong>
+                        </div>
+                        <div className="about-fact">
+                            <span className="about-fact-label">Venue</span>
+                            <strong>{eventDetails.locationLabel}</strong>
+                        </div>
+                    </div>
 
-
-                    <button className="btn-primary about-read-more">
-                        Read about the 2.0
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                    </button>
+                    <div className="about-actions">
+                        <Link to="/register" className="btn-primary about-read-more">
+                            Reserve your seat
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>
