@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://campustocareer.ng/sitemap.xml
+Sitemap: https://www.campustocareer.ng/sitemap.xml

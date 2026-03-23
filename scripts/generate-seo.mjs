@@ -26,6 +26,7 @@ const resolveSiteUrl = () => {
 };
 
 const siteUrl = resolveSiteUrl();
+const wwwSiteUrl = 'https://www.campustocareer.ng';
 
 const escapeHtml = (value) =>
   value
@@ -319,12 +320,20 @@ for (const campus of programmaticCampuses) {
   writeFileSync(path.join(directory, 'index.html'), renderCampusPage(campus), 'utf8');
 }
 
+const toAbsoluteWwwUrl = (route) => `${wwwSiteUrl}${route}`;
+
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapEntries
   .map(
     (entry) => `  <url>
     <loc>${toAbsoluteUrl(entry.path)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
+    <priority>${entry.priority}</priority>
+  </url>
+  <url>
+    <loc>${toAbsoluteWwwUrl(entry.path)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
@@ -338,6 +347,7 @@ const robotsTxt = `User-agent: *
 Allow: /
 
 Sitemap: ${siteUrl}/sitemap.xml
+Sitemap: ${wwwSiteUrl}/sitemap.xml
 `;
 
 const llmsTxt = `# Campus to Career
@@ -345,8 +355,11 @@ const llmsTxt = `# Campus to Career
 > Official site for Campus to Career student career-readiness events.
 
 Site: ${siteUrl}
+Site: ${wwwSiteUrl}
 Primary page: ${siteUrl}/
+Primary page: ${wwwSiteUrl}/
 ABUAD page: ${siteUrl}/campus-to-career-in-abuad/
+ABUAD page: ${wwwSiteUrl}/campus-to-career-in-abuad/
 
 Preferred citation title: Campus to Career
 Preferred description: Student-focused event and resources bridging academic learning to real career outcomes through The Becoming theme.
