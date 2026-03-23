@@ -15,13 +15,13 @@ const resolveSiteUrl = () => {
   const rawValue =
     process.env.SITE_URL ||
     process.env.VITE_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://campustocareer.pages.dev');
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://campustocareer.ng');
 
   try {
     const withProtocol = rawValue.startsWith('http') ? rawValue : `https://${rawValue}`;
     return new URL(withProtocol).origin.replace(/\/$/, '');
   } catch {
-    return 'https://campustocareer.pages.dev';
+    return 'https://campustocareer.ng';
   }
 };
 
@@ -360,4 +360,3 @@ writeFileSync(path.join(publicDir, 'llms.txt'), llmsTxt, 'utf8');
 console.log(
   `Generated SEO assets for ${programmaticCampuses.length} campus pages using site URL: ${siteUrl}`,
 );
-

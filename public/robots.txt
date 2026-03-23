@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://campustocareer.pages.dev/sitemap.xml
+Sitemap: https://campustocareer.ng/sitemap.xml

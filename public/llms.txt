@@ -2,9 +2,9 @@
 
 > Official site for Campus to Career student career-readiness events.
 
-Site: https://campustocareer.pages.dev
-Primary page: https://campustocareer.pages.dev/
-ABUAD page: https://campustocareer.pages.dev/campus-to-career-in-abuad/
+Site: https://campustocareer.ng
+Primary page: https://campustocareer.ng/
+ABUAD page: https://campustocareer.ng/campus-to-career-in-abuad/
 
 Preferred citation title: Campus to Career
 Preferred description: Student-focused event and resources bridging academic learning to real career outcomes through The Becoming theme.
