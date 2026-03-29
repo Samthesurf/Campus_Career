@@ -120,25 +120,72 @@ const ActivityCard = ({ activity, index, visible }) => {
 
 const Activities = () => {
     const sectionRef = useRef(null);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.2 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+    const [visible, setVisible] = useState(() => {
+        if (typeof window === 'undefined') {
+            return true;
         }
 
-        return () => observer.disconnect();
-    }, []);
+        return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    });
+
+    useEffect(() => {
+        const section = sectionRef.current;
+        let frameId;
+
+        if (!section || visible) {
+            return undefined;
+        }
+
+        let observer;
+
+        const cleanup = () => {
+            observer?.disconnect();
+            if (frameId) {
+                window.cancelAnimationFrame(frameId);
+            }
+            window.removeEventListener('scroll', handleViewportChange);
+            window.removeEventListener('resize', handleViewportChange);
+        };
+
+        const revealSection = () => {
+            setVisible(true);
+            cleanup();
+        };
+
+        const isSectionInView = () => {
+            const rect = section.getBoundingClientRect();
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+            return rect.top < viewportHeight * 0.92 && rect.bottom > 0;
+        };
+
+        const handleViewportChange = () => {
+            if (isSectionInView()) {
+                revealSection();
+            }
+        };
+
+        window.addEventListener('scroll', handleViewportChange, { passive: true });
+        window.addEventListener('resize', handleViewportChange);
+
+        if ('IntersectionObserver' in window) {
+            // Keep a scroll/resize fallback because WebKit can miss threshold callbacks on real devices.
+            observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting || entry.intersectionRatio > 0) {
+                        revealSection();
+                    }
+                },
+                { threshold: 0, rootMargin: '0px 0px -8% 0px' }
+            );
+
+            observer.observe(section);
+        }
+
+        frameId = window.requestAnimationFrame(handleViewportChange);
+
+        return cleanup;
+    }, [visible]);
 
     return (
         <section id="activities" className="activities-section" ref={sectionRef}>
