@@ -12,6 +12,7 @@ import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import SeoMeta from './components/SeoMeta'
 import Register from './pages/Register'
+import ThankYou from './pages/ThankYou'
 import Admin from './pages/Admin'
 import Footer from './components/Footer'
 
@@ -45,6 +46,7 @@ function App() {
           </main>
         } />
         <Route path="/register" element={<Register />} />
+        <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
 

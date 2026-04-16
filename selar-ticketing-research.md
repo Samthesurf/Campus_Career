@@ -1,55 +1,180 @@
-# Selar Ticketing Integration Research
+# Selar Integration: How It Will Work for Campus to Career
 
-Date: 2026-03-19
+Date: 2026-03-30
 
-## Summary
-Selar already provides a ticketing product (Tickets by Selar) with QR codes, ticket tiers (including free), offline check‑in, and post‑purchase redirection. Official docs describe organizer check‑in via the Tickets by Selar app: scanning QR codes on the attendee’s ticket receipt and searching the guest list by name/email. Attendees can also present a QR code in the Selar consumer app. If you need a downloadable QR image hosted on your site, that is not explicitly documented, so you will likely need a custom issuance flow or confirm Selar’s ticket download capabilities with support.
+## Goal
 
-## What Selar Provides (from official sources)
-- Ticketing features include ticket tiers (Free, Standard, VIP, VVIP), QR codes, detailed tickets with start/end times, and support for online, offline, and hybrid events. Selar also supports offline guest check‑in and customer redirection after ticket purchase. Integrations listed include Mailchimp/ConvertKit/Google Tag Manager/Facebook Pixel/Zapier. (Selar blog comparison article)
-- The Selar app lets customers access tickets and present a QR code at the gate for quick entry. (Selar app App Store listing)
-- The Tickets by Selar app allows event staff to scan QR codes at the door, works offline, supports multiple check‑in devices, and lets organizers track attendance/revenue during the event. (Selar 2026 product update blog)
-- The Tickets by Selar app shows a guest list with ticket tier, name, and email, and allows search by name or email. QR check‑in scans the attendee’s QR code on their ticket receipt and flags invalid or already‑used tickets. (Selar help article)
+Use Selar as the payment + ticketing engine while this website remains the primary event landing/registration experience.
 
-## Integration Options for This Site (No code)
-1. Link‑out registration (lowest effort)
-- Add a “Get Ticket” or “Register” CTA in the site that links to the Selar ticket checkout or event page.
-- Use Selar’s ticket tiers to create a free tier for now and switch to paid later.
-- This approach keeps payment and ticket issuance inside Selar while your site remains the marketing/landing page.
+In short:
 
-2. Post‑purchase redirect back to your site
-- Selar supports customer redirection after ticket purchase. You can redirect to a “Thank you / Next steps” page on your site.
-- On that page, explain how to access the ticket QR code in the Selar app and how check‑in works at the door.
+- Your site collects attendee details and drives conversion.
+- Selar processes payment and issues the QR ticket.
+- Cloudflare D1 stores a trusted local record for reporting and admin workflows.
 
-3. Automation (if you must show a downloadable QR image on your site)
-- Selar’s public materials highlight integrations (including Zapier). If you can receive purchase data via Zapier/webhooks, you could generate a QR image in your own system and show it on a “My Ticket” page.
-- This is only viable if you can get a stable ticket/attendee identifier from Selar. The exact payload and webhook availability are not clearly documented in public Selar docs, so this needs confirmation.
-- For a “one‑time download” flow: issue a short‑lived, signed ticket link after purchase; render the QR in the browser and let the user download a PNG; store only a “used/expired” flag rather than the image file.
+## Confirmed Selar Capabilities (used in this plan)
 
-## Requirement Fit: Downloadable QR Image
-- Confirmed: Selar provides QR codes for tickets and the official Selar consumer app lets attendees present their QR code at the gate.
-- Not confirmed in public docs: A downloadable ticket image hosted on your site or an API to fetch QR images. If this is a hard requirement, you’ll likely need a custom issuance flow (generate QR after purchase) or confirm Selar’s ticket download options and data access with Selar support.
+- Ticket tiers (free/paid tiers), QR tickets, discount codes.
+- Customer redirection after successful purchase.
+- Offline check-in with the Tickets by Selar mobile app.
+- Multi-device check-in for event staff.
+- Quick checkout link behavior and URL prefill parameters (`add_to_cart`, `email`, `fullname`, `mobile`, `address`).
+- Integrations including Zapier.
 
-## Suggested Path Given “Payment Later”
-- Create the event in Selar with a free ticket tier now (to test the flow end‑to‑end).
-- Use a link‑out CTA from your site to Selar checkout.
-- Add a post‑purchase redirect to a “Ticket Instructions” page on your site.
-- Once ready, switch the ticket price to paid tiers and keep the same integration.
-- Test the attendee flow: purchase a free ticket and verify where the QR code appears (receipt page, email, app) and whether a download option exists.
+## End-to-End User Flow
 
-## Open Questions to Resolve
-- Does Selar provide a downloadable ticket image or PDF with a QR code for attendees?
-- Are there official webhooks/API endpoints for ticket purchase events? If yes, what fields are available (ticket ID, QR payload, attendee email, etc.)?
-- Can post‑purchase redirect URLs include dynamic query parameters (e.g., order ID) to deep‑link users into a “My Ticket” page on your site?
-- What is the intended attendee experience if they do not install the Selar app (email, web ticket page, printable ticket, etc.)?
-- Is there a web‑based check‑in method, or is the Tickets by Selar app the only official check‑in/validation tool?
+### 1) Visitor fills form on this site
+
+- Route: `/register`
+- Current form data (email, full_name, college, department, level, interest, heard_from) is submitted to your backend.
+
+### 2) Backend stores a pending registration in D1
+
+- Existing endpoint: `POST /api/register`
+- Store record as `registration_status = "pending_payment"` (new status field).
+- Generate local `registration_id` for traceability.
+
+### 3) Frontend redirects user to Selar checkout
+
+- Build a Selar product URL using quick checkout params.
+- Example pattern:
+
+```text
+https://selar.co/<ticket_product_slug>?add_to_cart=1&email=<email>&fullname=<name>&mobile=<phone>
+```
+
+- This makes checkout open immediately and pre-fills buyer details.
+
+### 4) User pays on Selar
+
+- Selar handles payment methods, processing, and ticket generation.
+- Selar issues ticket/QR to the buyer through Selar channels (receipt/app/email flow managed by Selar).
+
+### 5) Selar redirects buyer back to your site
+
+- Configure Selar post-purchase redirect to:
+- `/ticket-confirmed` (new route/page on this site)
+- This page is for user messaging only ("payment received, check your Selar ticket/QR").
+
+### 6) Payment confirmation sync updates D1
+
+Preferred (fully automated):
+
+- Selar webhook (or Zapier trigger) calls your Cloudflare endpoint:
+- `POST /api/selar/webhook` (new endpoint)
+- Endpoint verifies source secret/signature.
+- Endpoint upserts payment state in D1 using unique `selar_order_id`.
+
+Fallback (if webhook is not available):
+
+- Use Zapier to forward Selar purchase events to your webhook.
+- Or do periodic manual reconciliation (CSV export/import) into D1.
+
+### 7) Admin sees real status in dashboard
+
+- Existing admin route `/admin` should read local D1 status:
+- pending_payment / paid / failed / refunded (as available)
+- This gives accurate reporting even if user closes browser before redirect returns.
+
+## Why D1 Sync Is Important
+
+Do not trust redirect query params as proof of payment.
+
+Reasons:
+
+- Redirect can be interrupted (network/user closes tab).
+- Redirect params can be tampered with.
+- You need idempotent, auditable records in your own database.
+
+D1 becomes your internal source of truth for:
+
+- paid attendee count
+- ticket tier mix
+- payment totals by currency
+- support and reconciliation
+
+## Cloudflare Architecture (No Third-Party Required)
+
+You can implement this directly on Cloudflare:
+
+- **Pages Functions** for webhook endpoints.
+- **D1** for persistent order/registration records.
+- **(Optional) Queues** for retry-safe async processing at scale.
+
+So, Zapier is optional, not mandatory.
+
+## Proposed Data Model Changes
+
+Extend existing `registrations` table (or create `ticket_orders` table) with:
+
+- `registration_status` (pending_payment, paid, failed, refunded)
+- `selar_order_id` (unique)
+- `selar_product_id` or `selar_ticket_slug`
+- `ticket_tier`
+- `amount_paid`
+- `currency`
+- `paid_at`
+- `payment_channel` (if provided)
+- `webhook_received_at`
+- `raw_event_json` (optional for audit/debug)
+
+### Idempotency rule
+
+Enforce uniqueness on `selar_order_id` and always upsert.
+
+This prevents duplicate rows when webhooks are retried.
+
+## Security Rules for Webhook Endpoint
+
+- Verify webhook secret/signature before processing.
+- Reject unsigned/invalid payloads with 401/403.
+- Log event IDs/order IDs for traceability.
+- Return 200 quickly after successful validation + storage.
+- Never expose secrets on frontend.
+
+## UX Behavior on Confirmation Page
+
+`/ticket-confirmed` should:
+
+- Confirm registration intent.
+- Explain that ticket/QR is delivered by Selar.
+- Tell user where to find it (receipt/email/app).
+- Provide event date/location and support contact.
+
+Optional:
+
+- Add "I did not receive my ticket" support path.
+
+## Event Day Operations
+
+- Check-in is done with Tickets by Selar app.
+- Staff scan attendee QR codes.
+- Offline mode is supported for poor network conditions.
+- Multiple staff can check in from multiple devices.
+
+## Implementation Plan in This Repo
+
+1. Update `Register.jsx` flow to redirect to Selar checkout after local save.
+2. Add `/ticket-confirmed` page and route.
+3. Add `functions/api/selar/webhook.js` with verification + D1 upsert.
+4. Add D1 migration for payment/ticket fields.
+5. Update admin API/UI to show payment status fields.
+6. Test free-tier end-to-end before switching to paid tiers.
+
+## What Must Be Confirmed in Selar Dashboard/Support
+
+- Webhook availability for ticket purchase events on your account.
+- Webhook signing format/secret configuration.
+- Exact payload fields (order id, buyer email, amount, currency, status, ticket info).
+- Post-purchase redirect behavior and supported dynamic params.
 
 ## Source Links
-- Selar blog: Tickets by Selar vs. Eventporte (features, tiers, QR codes, offline check‑in, redirects, integrations)
+
+- Tickets comparison with features (tiers, QR, offline check-in, redirects, integrations):
   https://selar.com/blog/tickets-by-selar-vs-eventporte/
-- Selar blog: 2026 product update (Tickets by Selar app scanning QR codes, offline mode, multi‑device check‑in)
+- Selar 2026 update (Tickets by Selar app, offline + multi-device check-in):
   https://selar.com/blog/selar-new-features-2026/
-- Selar app listing (attendee app with QR ticket display)
-  https://apps.apple.com/ga/app/selar-access-digital-products/id6748024658
-- Selar help: Tickets by Selar app (guest list, QR scan on ticket receipt, invalid/used ticket states, offline mode)
-  https://help.selar.com/portal/en/kb/articles/tickets-by-s
+- Quick checkout URL parameters (`add_to_cart`, prefill):
+  https://headwayapp.co/selar-updates/quick-checkout-(url-triggered)-great-for-sales-funnels-187557
+- Redirect product demo:
+  https://selar.com/skck

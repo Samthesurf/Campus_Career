@@ -7,7 +7,7 @@ import { calendarUrl, eventDetails } from '../data/eventDetails.js';
 const Footer = () => {
   const location = useLocation();
 
-  if (location.pathname === '/register') {
+  if (location.pathname === '/register' || location.pathname === '/thank-you') {
     return (
       <footer className="site-footer simple-footer">
         <div className="ambient-noise"></div>
@@ -43,7 +43,7 @@ const Footer = () => {
         </h2>
         <div className="footer-cta-buttons">
           <Link to="/register" className="btn-primary footer-cta-btn">
-            Register
+            Buy Tickets
           </Link>
           <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary footer-cta-btn-outline">
             Save the Date

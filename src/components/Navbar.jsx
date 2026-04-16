@@ -44,9 +44,8 @@ const Navbar = () => {
                     <li><a href="/#activities" onClick={() => setMobileMenuOpen(false)}>Activities</a></li>
                 </ul>
                 <div className="navbar-actions">
-                    <button className="btn-secondary">Become a Sponsor</button>
                     <Link to="/register">
-                        <button className="btn-primary" onClick={() => setMobileMenuOpen(false)}>Register</button>
+                        <button className="btn-primary" onClick={() => setMobileMenuOpen(false)}>Buy Tickets</button>
                     </Link>
                 </div>
             </div>

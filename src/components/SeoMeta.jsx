@@ -4,9 +4,9 @@ import { eventDetails } from "../data/eventDetails.js";
 
 const HOME_TITLE = "Campus to Career 2.0 | The Becoming at ABUAD";
 const HOME_DESCRIPTION =
-  "Campus to Career 2.0 returns on May 2nd, 2026 at Alfa Belgore Hall, ABUAD, with The Becoming theme focused on personal growth, branding, mentorship, and career readiness.";
+  "Tickets now available! Campus to Career 2.0 returns May 2nd, 2026 at Alfa Belgore Hall, ABUAD. Buy your ticket and join us for The Becoming — personal growth, branding, mentorship, and career readiness.";
 const HOME_KEYWORDS =
-  "campus to career, campus to career 2.0, the becoming, campus to career abuad, student career event nigeria, alfa belgore hall, afe babalola university career event";
+  "campus to career, campus to career 2.0, the becoming, campus to career abuad, student career event nigeria, alfa belgore hall, afe babalola university career event, buy tickets, tickets available";
 
 const upsertMeta = (selector, attributes) => {
   let meta = document.head.querySelector(selector);
@@ -46,12 +46,14 @@ const upsertStructuredData = (id, payload) => {
   script.textContent = JSON.stringify(payload);
 };
 
+const SELAR_URL = "https://selar.com/02i142m13v";
+
 const buildEventSchema = (canonicalUrl, imageUrl) => ({
   "@context": "https://schema.org",
   "@type": "Event",
   name: eventDetails.name,
   description:
-    "Student-focused event bridging academic learning and real-world careers through personal development, mentorship, networking, and actionable guidance.",
+    "Tickets now available! Student-focused event bridging academic learning and real-world careers through personal development, mentorship, networking, and actionable guidance.",
   startDate: eventDetails.startDateTime,
   endDate: eventDetails.endDateTime,
   eventStatus: "https://schema.org/EventScheduled",
@@ -66,6 +68,12 @@ const buildEventSchema = (canonicalUrl, imageUrl) => ({
     "@type": "Organization",
     name: "Campus to Career",
     url: canonicalUrl,
+  },
+  offers: {
+    "@type": "Offer",
+    url: SELAR_URL,
+    availability: "https://schema.org/InStock",
+    validFrom: "2026-04-16",
   },
 });
 

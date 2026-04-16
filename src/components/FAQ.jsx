@@ -66,7 +66,7 @@ const FAQ = () => {
                                 <div className="faq-answer-wrapper">
                                     <p className="faq-answer">{faq.answer}</p>
                                     <Link to="/register" className="faq-register-btn">
-                                        Register
+                                        Buy Tickets
                                     </Link>
                                 </div>
                             </div>
