@@ -14,6 +14,7 @@ import SeoMeta from './components/SeoMeta'
 import Register from './pages/Register'
 import ThankYou from './pages/ThankYou'
 import Admin from './pages/Admin'
+import AboutV2 from './pages/AboutV2'
 import Footer from './components/Footer'
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           </main>
         } />
         <Route path="/register" element={<Register />} />
+        <Route path="/about-v2" element={<AboutV2 />} />
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>

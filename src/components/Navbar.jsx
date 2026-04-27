@@ -32,7 +32,7 @@ const Navbar = () => {
     return (
         <nav className={navClass}>
             <div className="navbar-logo">
-                <Link to="/" aria-label="Go to hero section">
+                <Link to="/" onClick={() => window.scrollTo(0, 0)} aria-label="Go to hero section">
                     <img src={logo} alt="Campus Career Logo" className="logo-img" />
                 </Link>
             </div>

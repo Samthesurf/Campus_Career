@@ -1,0 +1,106 @@
+.about-v2-page {
+    min-height: 100vh;
+    padding: 8rem 5% 5rem;
+    background-color: #312435;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+}
+
+.about-v2-page .ambient-noise {
+    opacity: 0.05;
+}
+
+.about-v2-container {
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.about-v2-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.about-v2-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin: 0;
+    flex-wrap: wrap;
+    font-family: 'Outfit', sans-serif;
+}
+
+.about-v2-label {
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.about-v2-title-main .bubble-text-yellow {
+    color: #FFD700;
+    text-transform: lowercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.about-v2-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: clamp(2rem, 5vw, 4rem);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-v2-paragraph {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.about-v2-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-v2-action-btn {
+    padding: 1rem 2.5rem !important;
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
+}
+
+@media (max-width: 768px) {
+    .about-v2-page {
+        padding-top: 6rem;
+    }
+    
+    .about-v2-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 2rem auto 0;
+    }
+    
+    .about-v2-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

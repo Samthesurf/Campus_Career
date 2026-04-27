@@ -47,10 +47,13 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="about-actions">
+                    <div className="about-actions" style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem'}}>
                         <Link to="/register" className="btn-primary about-read-more">
                             Buy your ticket
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                        </Link>
+                        <Link to="/about-v2" className="btn-secondary">
+                            Read more about v2.0
                         </Link>
                     </div>
                 </div>
