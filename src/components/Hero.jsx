@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 import GraduationHat from './GraduationHat';
 import { calendarUrl, eventDetails } from '../data/eventDetails.js';
@@ -45,6 +46,14 @@ const Hero = () => {
                 <p className={`hero-tagline ${loaded ? 'hero-tagline-in' : ''}`}>
                     {eventDetails.theme.toUpperCase()}
                 </p>
+
+                <Link to="/register" className={`hero-cta-btn ${loaded ? 'hero-cta-in' : ''}`}>
+                    <svg className="hero-cta-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                        <path d="M13 5v2" /><path d="M13 17v2" /><path d="M13 11v2" />
+                    </svg>
+                    Get a Ticket
+                </Link>
             </div>
         </section>
     );

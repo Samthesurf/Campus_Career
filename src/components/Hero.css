@@ -274,6 +274,77 @@
     }
 }
 
+/* ====== HERO CTA BUTTON ====== */
+.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, #E8971A 0%, #fca928 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.4rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1.2px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow:
+        0 5px 0 #b37311,
+        0 8px 25px rgba(232, 151, 26, 0.35);
+    transform: translateY(0);
+    transition: all 0.15s ease-out;
+    position: relative;
+    z-index: 10;
+    /* Entrance animation — starts hidden */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: none;
+}
+
+.hero-cta-btn:hover {
+    background: linear-gradient(135deg, #fca928 0%, #ffd54f 100%);
+    box-shadow:
+        0 5px 0 #b37311,
+        0 10px 35px rgba(232, 151, 26, 0.5);
+    transform: translateY(-2px);
+}
+
+.hero-cta-btn:active {
+    transform: translateY(5px);
+    box-shadow:
+        0 0 0 #b37311,
+        0 2px 10px rgba(232, 151, 26, 0.2);
+}
+
+.hero-cta-icon {
+    flex-shrink: 0;
+}
+
+/* Entrance animation for the CTA */
+.hero-cta-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease 1.2s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s;
+    animation: ctaPulse 2.5s ease-in-out 2.5s infinite;
+}
+
+@keyframes ctaPulse {
+    0%, 100% {
+        box-shadow:
+            0 5px 0 #b37311,
+            0 8px 25px rgba(232, 151, 26, 0.35);
+    }
+    50% {
+        box-shadow:
+            0 5px 0 #b37311,
+            0 8px 35px rgba(232, 151, 26, 0.55),
+            0 0 20px rgba(232, 151, 26, 0.25);
+    }
+}
+
 /* ====== END HERO ANIMATIONS ====== */
 
 .bubble-text-yellow {
@@ -432,5 +503,10 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0.4rem;
+    }
+
+    .hero-cta-btn {
+        padding: 0.85rem 2rem;
+        font-size: 1rem;
     }
 }
