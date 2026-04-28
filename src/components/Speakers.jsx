@@ -31,7 +31,7 @@ const speakersData = [
     name: "Sophia Anozie",
     role: "Speaker",
     title: "LinkedIn Networking Session",
-    image: "/speakers/sophia_anozie.png"
+    image: "/speakers/Sophia_Anozie.png"
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const speakersData = [
   },
   {
     id: 11,
-    name: "Ibrahim Suleiman",
+    name: "Ibrahim Sanusi",
     role: "Host",
     title: "",
     image: "/speakers/ibrahim_suleiman.png"

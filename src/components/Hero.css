@@ -322,6 +322,14 @@
     flex-shrink: 0;
 }
 
+.hero-cta-arrow {
+    transition: transform 0.25s ease;
+}
+
+.hero-cta-btn:hover .hero-cta-arrow {
+    transform: translateX(4px);
+}
+
 /* Entrance animation for the CTA */
 .hero-cta-in {
     opacity: 1;
