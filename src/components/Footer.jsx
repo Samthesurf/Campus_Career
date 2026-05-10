@@ -12,7 +12,7 @@ const Footer = () => {
       <footer className="site-footer simple-footer">
         <div className="ambient-noise"></div>
         <div className="footer-bottom-bar simple-bottom-bar">
-          <p>&copy; 2026 Campus to Career. All Rights Reserved.</p>
+          <p>Made with love by <a href="https://samuelsurf.me" target="_blank" rel="noopener noreferrer">Samuel Surf</a></p>
           <div className="footer-socials">
             <a href="https://www.instagram.com/campustocareer_abuad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -104,7 +104,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom-bar">
-        <p>&copy; 2026 Campus to Career. All Rights Reserved.</p>
+        <p>Made with love by <a href="https://samuelsurf.me" target="_blank" rel="noopener noreferrer">Samuel Surf</a></p>
       </div>
     </footer>
   );
