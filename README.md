@@ -17,11 +17,9 @@ Discover the event
         ↓
 Understand the theme, programme, speakers, and activities
         ↓
-Choose to attend
+Choose the ticket or registration route
         ↓
-Register through the form
-        ↓
-Receive confirmation and event information
+Follow the ticket flow and receive the event information
         ↓
 Find the venue, schedule, and follow-up opportunities
 ```
@@ -33,11 +31,12 @@ The site includes:
 - Speaker, partner, activity, highlights, FAQ, and testimonial sections.
 - A detailed programme schedule.
 - Calendar integration for saving the event date.
-- Registration with duplicate-email protection.
-- A post-registration thank-you flow.
-- An admin area for protected registration review and deletion.
+- A public registration route that currently redirects ticket buyers to the Selar ticket page.
+- A D1-backed registration path with duplicate-email protection for event-owned registration data.
+- A post-registration thank-you route for the internal form flow.
+- A protected admin area for registration review and deletion.
+- Registration charts, summaries, and CSV export in the admin dashboard.
 - SEO generation, sitemap, `robots.txt`, and `llms.txt` support.
-- Cloudflare Pages Functions backed by D1 for registration data.
 
 ## What is in the codebase
 
@@ -99,7 +98,7 @@ The local `/api` requests are proxied to the local worker during development. D1
 
 ## A note on the backend
 
-The registration form is not a decorative front end. It writes to D1, rejects duplicate email registrations, and gives authorized admins a protected view of the collected registrations. Confirmation email code is kept in the Pages Functions layer so the public React app does not need to hold service credentials.
+The public `/register` route currently sends attendees to the Selar ticket page. The repository also contains a D1-backed registration path and protected admin endpoints for event-owned registration data, analytics, CSV export, and deletion. Keeping those responsibilities in Pages Functions means the public React app does not need to hold database or email service credentials.
 
 ## Why the project is worth looking at
 
